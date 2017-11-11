@@ -1,13 +1,32 @@
-import AbstractNodeLike              from '../AbstractNodeLike';
-import IChildNodeLike                from '../IChildNodeLike';
-import IDocumentLike                 from '../ParentNodeLike/DocumentLike/IDocumentLike';
-import IDocumentTypeLike             from './IDocumentTypeLike';
-import IElementLike                  from '../ParentNodeLike/ElementLike/IElementLike';
-import INonDocumentTypeChildNodeLike from '../INonDocumentTypeChildNodeLike';
-import isIElementLike                from '../../TypeGuards/isIElementLike';
-import MChildNodeLike                from '../MChildNodeLike';
-import TConstructor                  from '../../TypeAliases/TConstructor';
-abstract class AbstractDocumentTypeLike extends MChildNodeLike(<TConstructor<AbstractNodeLike>>AbstractNodeLike) implements IDocumentTypeLike {
+import {
+  AbstractNodeLike,
+} from '../AbstractNodeLike';
+import {
+  IChildNodeLike,
+} from '../IChildNodeLike';
+import {
+  IDocumentLike,
+} from '../ParentNodeLike/DocumentLike/IDocumentLike';
+import {
+  IDocumentTypeLike,
+} from './IDocumentTypeLike';
+import {
+  IElementLike,
+} from '../ParentNodeLike/ElementLike/IElementLike';
+import {
+  INonDocumentTypeChildNodeLike,
+} from '../INonDocumentTypeChildNodeLike';
+import {
+  isIElementLike,
+} from '../../TypeGuards/isIElementLike';
+import {
+  MChildNodeLike,
+} from '../MChildNodeLike';
+import {
+  TConstructor,
+} from '../../TypeAliases/TConstructor';
+
+export abstract class AbstractDocumentTypeLike extends MChildNodeLike(<TConstructor<AbstractNodeLike>>AbstractNodeLike) implements IDocumentTypeLike {
   abstract readonly nodeType:        10;
   abstract readonly nodeValue:       null;
   abstract readonly name:            string;
@@ -119,6 +138,10 @@ abstract class AbstractDocumentTypeLike extends MChildNodeLike(<TConstructor<Abs
     /* Get rid of VS not-used error. */nextSibling;
     super.__setNextSibling(nextSibling);
     return nextSibling;
+  }
+
+  __flushToHtml(): string {
+    return `<!DOCTYPE ${this.name}>`;
   }
 }
 

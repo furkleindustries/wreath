@@ -1,9 +1,20 @@
-import IAbstractSyntaxNode       from '../Parser/IAbstractSyntaxNode';
-import IDocumentLike             from '../NodeLike/ParentNodeLike/DocumentLike/IDocumentLike';
-import INonDocumentTypeChildNode from '../NodeLike/INonDocumentTypeChildNodeLike';
-import TAbstractSyntaxContent    from '../TypeAliases/TAbstractSyntaxContent';
-import TextLike                  from '../NodeLike/CharacterDataLike/TextLike/TextLike';
-function nodeFactory(value: TAbstractSyntaxContent, document: IDocumentLike): INonDocumentTypeChildNode {
+import {
+  IAbstractSyntaxNode,
+} from '../Parser/IAbstractSyntaxNode';
+import {
+  IDocumentLike,
+} from '../NodeLike/ParentNodeLike/DocumentLike/IDocumentLike';
+import {
+  INonDocumentTypeChildNodeLike,
+} from '../NodeLike/INonDocumentTypeChildNodeLike';
+import {
+  TAbstractSyntaxContent,
+ } from '../TypeAliases/TAbstractSyntaxContent';
+import {
+  TextLike,
+} from '../NodeLike/CharacterDataLike/TextLike/TextLike';
+
+export function nodeFactory(value: TAbstractSyntaxContent, document: IDocumentLike): INonDocumentTypeChildNodeLike {
   if (typeof value === 'string') {
     return new TextLike(value, document);
   } else if (value.type === 'variable') {

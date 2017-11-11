@@ -1,5 +1,8 @@
-import ICharacterDataLike from '../ICharacterDataLike';
-interface IProcessingInstructionLike extends ICharacterDataLike {
+import {
+  ICharacterDataLike,
+} from '../ICharacterDataLike';
+
+export interface IProcessingInstructionLike extends ICharacterDataLike {
   target:                    string;
   cloneNode(deep?: boolean): IProcessingInstructionLike;
 }

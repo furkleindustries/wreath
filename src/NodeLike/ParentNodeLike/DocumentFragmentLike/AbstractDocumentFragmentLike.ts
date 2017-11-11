@@ -1,18 +1,41 @@
-import AbstractNodeLike              from '../../AbstractNodeLike';
-import IChildNodeLike                from '../../IChildNodeLike';
-import IDocumentFragmentLike         from './IDocumentFragmentLike';
-import IDocumentLike                 from '../DocumentLike/IDocumentLike';
-import IElementLike                  from '../ElementLike/IElementLike';
-import INonDocumentTypeChildNodeLike from '../../INonDocumentTypeChildNodeLike';
-import IParentNodeLike               from '../IParentNodeLike';
-import isIDocumentTypeLike           from '../../../TypeGuards/isIDocumentTypeLike';
-import isIElementLike                from '../../../TypeGuards/isIElementLike';
-import MParentNodeLike               from '../MParentNodeLike';
-import TConstructor                  from '../../../TypeAliases/TConstructor';
+import {
+  AbstractNodeLike,
+} from '../../AbstractNodeLike';
+import {
+  IChildNodeLike,
+} from '../../IChildNodeLike';
+import {
+  IDocumentFragmentLike,
+} from './IDocumentFragmentLike';
+import {
+  IDocumentLike,
+} from '../DocumentLike/IDocumentLike';
+import {
+  IElementLike,
+} from '../ElementLike/IElementLike';
+import {
+  INonDocumentTypeChildNodeLike,
+} from '../../INonDocumentTypeChildNodeLike';
+import {
+  IParentNodeLike,
+} from '../IParentNodeLike';
+import {
+  isIDocumentTypeLike,
+} from '../../../TypeGuards/isIDocumentTypeLike';
+import {
+  isIElementLike,
+} from '../../../TypeGuards/isIElementLike';
+import {
+  MParentNodeLike,
+} from '../MParentNodeLike';
+import {
+  TConstructor,
+} from '../../../TypeAliases/TConstructor';
 import {
   OrderedSet,
 } from 'immutable';
-abstract class AbstractDocumentFragmentLike extends MParentNodeLike(<TConstructor<AbstractNodeLike>>AbstractNodeLike) implements IDocumentFragmentLike {
+
+export abstract class AbstractDocumentFragmentLike extends MParentNodeLike(<TConstructor<AbstractNodeLike>>AbstractNodeLike) implements IDocumentFragmentLike {
   abstract readonly nodeType:          11;
   abstract readonly nodeName:          '#document-fragment';
   abstract readonly nodeValue:         null;
@@ -245,6 +268,10 @@ abstract class AbstractDocumentFragmentLike extends MParentNodeLike(<TConstructo
 
   __setNextSibling(): INonDocumentTypeChildNodeLike {
     throw new Error('A document fragment cannot have siblings.');
+  }
+
+  __flushToHtml(): string {
+    throw new Error('Document fragments cannot be represented in HTML.');
   }
 }
 

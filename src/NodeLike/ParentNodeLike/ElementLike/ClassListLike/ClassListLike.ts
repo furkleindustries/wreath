@@ -9,19 +9,19 @@ import {
 } from 'immutable';
 
 export class ClassListLike implements IClassListLike {
-  private element: IElementLike;
-  private classes: List<string>;
+  private __element: IElementLike;
+  private __classes: List<string>;
 
   get length(): number {
-    return this.classes.count();
+    return this.__classes.count();
   }
 
   get value(): string {
-    return this.classes.join(' ');
+    return this.__classes.join(' ');
   }
 
   constructor(element: IElementLike) {
-    this.element = element;
+    this.__element = element;
     this.__pullFromParent();
   }
 
@@ -29,7 +29,7 @@ export class ClassListLike implements IClassListLike {
     let updated = false;
     classes.forEach((cls:string) => {
       if (classes.indexOf(cls) === -1) {
-        this.classes = this.classes.push(cls);
+        this.__classes = this.__classes.push(cls);
         updated = true;
       }
     });
@@ -42,9 +42,9 @@ export class ClassListLike implements IClassListLike {
   remove(...classes: Array<string>): void {
     let updated: boolean = false;
     classes.forEach((cls: string) => {
-      const index: number = this.classes.indexOf(cls);
+      const index: number = this.__classes.indexOf(cls);
       if (index !== -1) {
-        this.classes = this.classes.delete(index);
+        this.__classes = this.__classes.delete(index);
         updated = true;
       }
     });
@@ -55,16 +55,16 @@ export class ClassListLike implements IClassListLike {
   }
 
   item(index: number): string {
-    return this.classes.get(index) || '';
+    return this.__classes.get(index) || '';
   }
 
   toggle(...classes: Array<string>): void {
     classes.forEach((cls: string) => {
-      const index = this.classes.indexOf(cls);
+      const index = this.__classes.indexOf(cls);
       if (index === -1) {
-        this.classes = this.classes.delete(index);
+        this.__classes = this.__classes.delete(index);
       } else {
-        this.classes = this.classes.push(cls);
+        this.__classes = this.__classes.push(cls);
       }
     });
 
@@ -72,23 +72,23 @@ export class ClassListLike implements IClassListLike {
   }
 
   replace(oldClass: string, newClass: string): void {
-    const index = this.classes.indexOf(oldClass);
+    const index = this.__classes.indexOf(oldClass);
     if (index !== -1) {
-      this.classes = this.classes.set(index, newClass);
+      this.__classes = this.__classes.set(index, newClass);
       this.__pushToParent();
     }
   }
 
   contains(cls: string): boolean {
-    return this.classes.indexOf(cls) !== -1;
+    return this.__classes.indexOf(cls) !== -1;
   }
 
   __pushToParent(): void {
-    this.element.setAttribute('class', this.value);
+    this.__element.setAttribute('class', this.value);
   }
 
   __pullFromParent(): void {
-    const classes = this.element.className
+    const classes = this.__element.className
       /* Use the space as a delimiter. */
       .split(' ')
       /* Throw away all empty strings. */
@@ -97,7 +97,7 @@ export class ClassListLike implements IClassListLike {
       });
 
     /* Make the class list immutable. */
-    this.classes = List(classes);
+    this.__classes = List(classes);
   }
 }
 

@@ -1,4 +1,4 @@
-interface ITaskFunctionMap {
+export interface ITaskFunctionMap {
   preSetup?:         Function;
   setup?:            Function;
   postSetup?:        Function;

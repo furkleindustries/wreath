@@ -1,13 +1,34 @@
-import IAttributeLike             from '../ElementLike/AttributeLike/IAttributeLike';
-import IChildNodeLike             from '../../IChildNodeLike';
-import ICommentLike               from '../../CharacterDataLike/CommentLike/ICommentLike';
-import IDocumentTypeLike          from '../../DocumentTypeLike/IDocumentTypeLike';
-import IDocumentFragmentLike      from '../../ParentNodeLike/DocumentFragmentLike/IDocumentFragmentLike';
-import IElementLike               from '../ElementLike/IElementLike';
-import IParentNodeLike            from '../IParentNodeLike';
-import IProcessingInstructionLike from '../../CharacterDataLike/ProcessingInstructionLike/IProcessingInstructionLike';
-import IQueryable                 from '../IQueryable';
-import ITextLike                  from '../../CharacterDataLike/TextLike/ITextLike';
+import {
+  IAttributeLike,
+} from '../ElementLike/AttributeLike/IAttributeLike';
+import {
+  IChildNodeLike,
+} from '../../IChildNodeLike';
+import {
+  ICommentLike,
+} from '../../CharacterDataLike/CommentLike/ICommentLike';
+import {
+  IDocumentTypeLike,
+} from '../../DocumentTypeLike/IDocumentTypeLike';
+import {
+  IDocumentFragmentLike,
+} from '../../ParentNodeLike/DocumentFragmentLike/IDocumentFragmentLike';
+import {
+  IElementLike,
+} from '../ElementLike/IElementLike';
+import {
+  IParentNodeLike,
+} from '../IParentNodeLike';
+import {
+  IProcessingInstructionLike,
+} from '../../CharacterDataLike/ProcessingInstructionLike/IProcessingInstructionLike';
+import {
+  IQueryable,
+} from '../IQueryable';
+import {
+  ITextLike,
+} from '../../CharacterDataLike/TextLike/ITextLike';
+
 export interface IDocumentLike extends IParentNodeLike, IQueryable {
   readonly nodeValue:               null;
   readonly textContent:             null;

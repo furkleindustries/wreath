@@ -1,10 +1,23 @@
-import IDocumentLike    from '../NodeLike/ParentNodeLike/DocumentLike/IDocumentLike';
-import IRecurser        from '../Recurser/IRecurser';
-import ITask            from './ITask';
-import ITaskFunctionMap from './ITaskFunctionMap';
-import Recurser         from '../Recurser/Recurser';
-import TIndexableObject from '../TypeAliases/TIndexableObject';
-abstract class AbstractTask implements ITask {
+import {
+  IDocumentLike,
+} from '../NodeLike/ParentNodeLike/DocumentLike/IDocumentLike';
+import {
+  IRecurser,
+} from '../Recurser/IRecurser';
+import {
+  ITask,
+} from './ITask';
+import {
+  ITaskFunctionMap,
+} from './ITaskFunctionMap';
+import {
+  Recurser,
+} from '../Recurser/Recurser';
+import {
+  TIndexableObject,
+} from '../TypeAliases/TIndexableObject';
+
+export abstract class AbstractTask implements ITask {
   /* Allow user-driven tasks to collect results. */
   accumulator: TIndexableObject | Array<any> = {};
 

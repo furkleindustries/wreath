@@ -1,6 +1,11 @@
-import AbstractCharacterDataLike     from '../AbstractCharacterDataLike';
-import ITextLike                     from './ITextLike';
-abstract class AbstractTextLike extends AbstractCharacterDataLike implements ITextLike {
+import {
+  AbstractCharacterDataLike,
+} from '../AbstractCharacterDataLike';
+import {
+  ITextLike,
+} from './ITextLike';
+
+export abstract class AbstractTextLike extends AbstractCharacterDataLike implements ITextLike {
   readonly nodeType:           number = 3;
   readonly nodeName:           string = '#text';
 
@@ -17,6 +22,10 @@ abstract class AbstractTextLike extends AbstractCharacterDataLike implements ITe
     const afterNode = this.ownerDocument.createTextNode(after);
     this.after(afterNode);
     return afterNode;
+  }
+  
+  __flushToHtml() {
+    return this.data;
   }
 }
 

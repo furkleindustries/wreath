@@ -1,8 +1,17 @@
-import AbstractTask     from './AbstractTask';
-import INodeLike        from '../NodeLike/INodeLike';
-import isIElementLike   from '../TypeGuards/isIElementLike';
-import TIndexableObject from '../TypeAliases/TIndexableObject';
-class DisplayUsageTask extends AbstractTask {
+import {
+  AbstractTask,
+} from './AbstractTask';
+import {
+  INodeLike,
+} from '../NodeLike/INodeLike';
+import {
+  isIElementLike,
+} from '../TypeGuards/isIElementLike';
+import {
+  TIndexableObject,
+} from '../TypeAliases/TIndexableObject';
+
+export class DisplayUsageTask extends AbstractTask {
   executeMicrotask: Function = (
     node:        INodeLike,
     passageName: string,

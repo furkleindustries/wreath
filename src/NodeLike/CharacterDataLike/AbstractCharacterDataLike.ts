@@ -1,11 +1,26 @@
-import AbstractNodeLike              from '../AbstractNodeLike';
-import ICharacterDataLike            from './ICharacterDataLike';
-import IDocumentLike                 from '../ParentNodeLike/DocumentLike/IDocumentLike';
-import IElementLike                  from '../ParentNodeLike/ElementLike/IElementLike';
-import INonDocumentTypeChildNodeLike from '../INonDocumentTypeChildNodeLike';
-import MChildNodeLike                from '../MChildNodeLike';
-import TConstructor                  from '../../TypeAliases/TConstructor';
-abstract class AbstractCharacterDataLike extends MChildNodeLike(<TConstructor<AbstractNodeLike>>AbstractNodeLike) implements ICharacterDataLike {
+import {
+  AbstractNodeLike,
+} from '../AbstractNodeLike';
+import {
+  ICharacterDataLike,
+} from './ICharacterDataLike';
+import {
+  IDocumentLike,
+} from '../ParentNodeLike/DocumentLike/IDocumentLike';
+import {
+  IElementLike,
+} from '../ParentNodeLike/ElementLike/IElementLike';
+import {
+  INonDocumentTypeChildNodeLike,
+} from '../INonDocumentTypeChildNodeLike';
+import {
+  MChildNodeLike,
+} from '../MChildNodeLike';
+import {
+  TConstructor,
+} from '../../TypeAliases/TConstructor';
+
+export abstract class AbstractCharacterDataLike extends MChildNodeLike(<TConstructor<AbstractNodeLike>>AbstractNodeLike) implements ICharacterDataLike {
   abstract data:                            string;
   abstract textContent:                     string;
   abstract readonly length:                 number;

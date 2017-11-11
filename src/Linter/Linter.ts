@@ -13,7 +13,7 @@ import {
   detectVersion,
 } from '../modules/detectVersion';
 import {
-  documentConstructor,
+  documentGetter,
 } from '../modules/documentConstructor';
 import {
   DocumentFragmentIntermediateRepresentationGenerator,
@@ -50,7 +50,6 @@ import {
 import {
   IPassage,
 } from '../Passage/IPassage';
-import { IIntermediateRepresentationGeneratorOptions } from '../IntermediateRepresentationGenerator/IIntermediateRepresentationGeneratorOptions';
 
 const semver = require('semver');
 
@@ -156,7 +155,7 @@ export class Linter implements ILinter {
 
       opts.documentConstructor = options.documentConstructor;
     } else {
-      opts.documentConstructor = documentConstructor;
+      opts.documentConstructor = documentGetter;
     }
 
     this.options = <ILinterOptions>opts;
@@ -165,7 +164,7 @@ export class Linter implements ILinter {
   lint(
     storyData: IElementLike,
     tasks: Array<ITask>,
-    options?: ILinterOptions): Array<ITask>
+    options?: ILinterOptionsArgument): Array<ITask>
   {
     if (!isIElementLike(storyData)) {
       throw new Error('The storyData argument was not an element.');
@@ -252,7 +251,42 @@ export class Linter implements ILinter {
                       'a valid semantic version.');
     }
 
-    const stageOne = this.generateILStageOne(storyData, opts);
+    const children = storyData.children.filter((child) => {
+      const tagName = child.tagName;
+      const passageName = (child.getAttribute('name') || '').toLowerCase();
+
+      /* Don't lint any passages that match on element tag or passage name. */
+      if (opts.passageIgnores.elementTags.indexOf(tagName) !== -1 ||
+          opts.passageIgnores.passageNames.indexOf(passageName) !== -1)
+      {
+        return false;
+      }
+      
+
+      /* Don't lint any passages that match on a passage tag. */
+      const tags = (child.getAttribute('tags') || '')
+        .split(' ')
+        .filter(aa => aa);
+  
+      let found = false;
+      for (let ii = 0; ii < tags.length; ii += 1) {
+        const tag = tags[ii];
+        if (opts.passageIgnores.passageTags.indexOf(tag) !== -1) {
+          found = true;
+          break;
+        }
+      }
+  
+      /* Skip the passage if a tag matched an ignore rule. */
+      if (found) {
+        return false;
+      }
+
+      return true;
+    });
+
+
+    const stageOne = this.generateILStageOne(children, opts);
     let len = 1;
     if (opts.runInIsolation) {
       len = tasks.length;
@@ -268,8 +302,8 @@ export class Linter implements ILinter {
   }
 
   generateILStageOne(
-    storyData: IElementLike,
-    options:   IIntermediateRepresentationGeneratorOptions): Array<IPassage>
+    storyData: Array<IElementLike>,
+    options:   TIndexableObject): Array<IPassage>
   {
     const gen = new ArrayIntermediateRepresentationGenerator();
     return gen.generate(storyData, options);
@@ -277,7 +311,7 @@ export class Linter implements ILinter {
 
   generateILStageTwo(
     passages: Array<IPassage>,
-    options:  IIntermediateRepresentationGeneratorOptions): IDocumentFragmentLike
+    options:  TIndexableObject): IDocumentFragmentLike
   {
     const gen = new DocumentFragmentIntermediateRepresentationGenerator();
     return gen.generate(passages, options);

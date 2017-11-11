@@ -8,22 +8,22 @@ import {
   IIntermediateRepresentationGenerator,
 } from './IIntermediateRepresentationGenerator';
 import {
+  IPassage,
+} from '../Passage/IPassage';
+import {
   isIDocumentLike,
 } from '../TypeGuards/isIDocumentLike';
 import {
   storyDataFactory,
 } from '../modules/storyDataFactory';
 import {
-  IPassage,
-} from '../Passage/IPassage';
-import {
-  IIntermediateRepresentationGeneratorOptions,
-} from './IIntermediateRepresentationGeneratorOptions';
+  TIndexableObject,
+} from '../TypeAliases/TIndexableObject';
 
 export class DocumentFragmentIntermediateRepresentationGenerator implements IIntermediateRepresentationGenerator {
   generate(
     passages: Array<IPassage>,
-    options:  IIntermediateRepresentationGeneratorOptions): IDocumentFragmentLike
+    options:  TIndexableObject): IDocumentFragmentLike
   {
     let doc: IDocumentLike | null = null;
     if (options.documentConstructor &&

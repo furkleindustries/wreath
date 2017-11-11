@@ -35,7 +35,13 @@ import {
   IElementLike,
 } from '../ElementLike/IElementLike';
 import {
-  INonDocumentTypeChildNode,
+  IMatcher,
+} from '../../../Matcher/IMatcher';
+import {
+  OrderedSet,
+} from 'immutable';
+import {
+  INonDocumentTypeChildNodeLike,
 } from '../../INonDocumentTypeChildNodeLike';
 import {
   IParentNodeLike,
@@ -62,19 +68,15 @@ import {
   ProcessingInstructionLike,
 } from '../../CharacterDataLike/ProcessingInstructionLike/ProcessingInstructionLike';
 import {
-  TConstructor,
-} from '../../../TypeAliases/TConstructor';
-import {
   TextLike,
 } from '../../CharacterDataLike/TextLike/TextLike';
 import {
-  IMatcher,
-} from '../../../Matcher/IMatcher';
-import {
-  OrderedSet,
-} from 'immutable';
+  TConstructor,
+} from '../../../TypeAliases/TConstructor';
+
 const nwmatcher = require('nwmatcher');
-abstract class AbstractDocumentLike extends MParentNodeLike(<TConstructor<AbstractNodeLike>>AbstractNodeLike) implements IDocumentLike {
+
+export abstract class AbstractDocumentLike extends MParentNodeLike(<TConstructor<AbstractNodeLike>>AbstractNodeLike) implements IDocumentLike {
   abstract readonly nodeType:          9;
   abstract readonly nodeName:          '#document';
   abstract readonly nodeValue:         null;
@@ -96,10 +98,6 @@ abstract class AbstractDocumentLike extends MParentNodeLike(<TConstructor<Abstra
   abstract readonly firstElementChild: IElementLike | null;
   abstract readonly lastElementChild:  IElementLike | null;
   protected __matcher:                 IMatcher;
-
-  constructor() {
-    super();
-  }
 
   getElementById(id: string): IElementLike | null {
     if (!this.documentElement) {
@@ -360,12 +358,12 @@ abstract class AbstractDocumentLike extends MParentNodeLike(<TConstructor<Abstra
     throw new Error('A document cannot have siblings.');
   }
 
-  __setNextSibling(nextSibling: INonDocumentTypeChildNode): INonDocumentTypeChildNode {
+  __setNextSibling(nextSibling: INonDocumentTypeChildNodeLike): INonDocumentTypeChildNodeLike {
     /* Get rid of VS not-used error. */nextSibling;
     throw new Error('A document cannot have siblings.');
   }
 
-  __getMatcher(): TMatcher {
+  __getMatcher(): IMatcher {
     if (!this.__matcher) {
       this.__matcher = new nwmatcher({ document: this, });
     }
@@ -381,6 +379,10 @@ abstract class AbstractDocumentLike extends MParentNodeLike(<TConstructor<Abstra
   __setBody(body: IElementLike | null): IElementLike | null {
     this.__body = body;
     return body;
+  }
+
+  __flushToHtml(): string {
+    throw new Error('Documents cannot be represented in HTML.');
   }
 }
 

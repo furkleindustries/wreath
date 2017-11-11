@@ -1,5 +1,8 @@
-import IParentNodeLike from '../NodeLike/ParentNodeLike/IParentNodeLike';
-function isIParentNodeLike(node: any): node is IParentNodeLike {
+import {
+  IParentNodeLike,
+} from '../NodeLike/ParentNodeLike/IParentNodeLike';
+
+export function isIParentNodeLike(node: any): node is IParentNodeLike {
   return node &&
     node.children &&
     typeof node.children === 'object' &&

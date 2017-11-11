@@ -5,9 +5,6 @@ import {
   IElementLike,
 } from '../NodeLike/ParentNodeLike/ElementLike/IElementLike';
 import {
-  IIntermediateRepresentationGeneratorOptions,
-} from '../IntermediateRepresentationGenerator/IIntermediateRepresentationGeneratorOptions';
-import {
   ILinterOptions,
 } from './ILinterOptions';
 import {
@@ -22,6 +19,9 @@ import {
 import {
   ITask,
 } from '../Task/ITask';
+import {
+  TIndexableObject,
+} from '../TypeAliases/TIndexableObject';
 
 export interface ILinter {
   readonly parser:  IParser;
@@ -30,15 +30,15 @@ export interface ILinter {
   lint(
     storyData: IElementLike,
     tasks:     Array<ITask>,
-    options:   ILinterOptionsArgument): Array<ITask>;
+    options:   ILinterOptionsArgument):                      Array<ITask>;
 
   generateILStageOne(
-    storyData: IElementLike,
-    options:   IIntermediateRepresentationGeneratorOptions): Array<IPassage>;
+    storyData: Array<IElementLike>,
+    options:   TIndexableObject): Array<IPassage>;
 
   generateILStageTwo(
-    passages:  Array<IPassage>,
-    options:   IIntermediateRepresentationGeneratorOptions): IDocumentFragmentLike;
+    storyData: Array<IPassage>,
+    options:   TIndexableObject): IDocumentFragmentLike;
 }
 
 export default ILinter;

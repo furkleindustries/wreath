@@ -1,15 +1,39 @@
-import AbstractElementLike           from './AbstractElementLike';
-import AttributeLike                 from './AttributeLike/AttributeLike';
-import IChildNodeLike                from '../../IChildNodeLike';
-import IClassListLike                from './ClassListLike/IClassListLike';
-import IDocumentLike                 from '../DocumentLike/IDocumentLike';
-import IElementLike                  from './IElementLike';
-import IParentNodeLike               from '../IParentNodeLike';
-import isIElementLike                from '../../../TypeGuards/isIElementLike';
-import INonDocumentTypeChildNodeLike from '../../INonDocumentTypeChildNodeLike';
-class ElementLike extends AbstractElementLike {
-  readonly nodeType: number = 1;
-  readonly tagName:  string;
+import {
+  AbstractElementLike,
+} from './AbstractElementLike';
+import {
+  AttributeLike,
+} from './AttributeLike/AttributeLike';
+import {
+  IChildNodeLike,
+} from '../../IChildNodeLike';
+import {
+  IClassListLike,
+} from './ClassListLike/IClassListLike';
+import {
+  IDocumentLike,
+} from '../DocumentLike/IDocumentLike';
+import {
+  IElementLike,
+} from './IElementLike';
+import {
+  IParentNodeLike,
+} from '../IParentNodeLike';
+import {
+  isIElementLike,
+} from '../../../TypeGuards/isIElementLike';
+import {
+  INonDocumentTypeChildNodeLike,
+} from '../../INonDocumentTypeChildNodeLike';
+
+export class ElementLike extends AbstractElementLike {
+  get nodeType(): 1 {
+    return 1;
+  }
+
+  get tagName(): string {
+    return this.__tagName;
+  }
 
   get nodeName(): string {
     return this.tagName;
@@ -20,15 +44,15 @@ class ElementLike extends AbstractElementLike {
   }
 
   get textContent(): string {
-    return this.childNodes.reduce((str: string, node: INonDocumentTypeChildNodeLike): string => {
+    return this.childNodes.reduce((str: string, node: INonDocumentTypeChildNodeLike) => {
       return str + (node.textContent || '');
     }, '');
   }
 
   get innerHTML(): string {
-    return this.__childNodes.reduce((str, node) => {
+    return this.__childNodes.reduce((str: string, node: INonDocumentTypeChildNodeLike) => {
       return str + node.__flushToHtml();
-    });
+    }, '');
   }
 
   get outerHTML(): string {

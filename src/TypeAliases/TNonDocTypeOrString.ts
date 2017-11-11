@@ -1,4 +1,7 @@
-import INonDocumentTypeChildNodeLike from '../NodeLike/INonDocumentTypeChildNodeLike';
-type TNonDocTypeOrString = INonDocumentTypeChildNodeLike | string;
+import {
+  INonDocumentTypeChildNodeLike,
+} from '../NodeLike/INonDocumentTypeChildNodeLike';
+
+export type TNonDocTypeOrString = INonDocumentTypeChildNodeLike | string;
 
 export default TNonDocTypeOrString;

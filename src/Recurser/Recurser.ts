@@ -1,7 +1,14 @@
-import INodeLike        from '../NodeLike/INodeLike';
-import IRecurser        from './IRecurser';
-import TIndexableObject from '../TypeAliases/TIndexableObject';
-class Recurser implements IRecurser {
+import {
+  INodeLike,
+} from '../NodeLike/INodeLike';
+import {
+  IRecurser,
+} from './IRecurser';
+import {
+  TIndexableObject,
+} from '../TypeAliases/TIndexableObject';
+
+export class Recurser implements IRecurser {
   leftTopRecurse(
     node:     INodeLike,
     format:   string,

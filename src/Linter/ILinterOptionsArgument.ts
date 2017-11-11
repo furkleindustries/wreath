@@ -1,9 +1,14 @@
-import IElementLike     from '../NodeLike/ParentNodeLike/ElementLike/IElementLike';
-import TPassageIgnores  from '../TypeAliases/TPassageIgnores';
 import {
   DetectionModes,
   Formats,
 } from '../constants';
+import {
+  IElementLike,
+} from '../NodeLike/ParentNodeLike/ElementLike/IElementLike';
+import {
+  TPassageIgnores,
+} from '../TypeAliases/TPassageIgnores';
+
 export interface ILinterOptionsArgument {
   detectionMode?:       DetectionModes;
   documentConstructor?: Function;

@@ -1,9 +1,20 @@
-import AbstractProcessingInstructionLike from './AbstractProcessingInstructionLike';
-import IDocumentLike                     from '../../ParentNodeLike/DocumentLike/IDocumentLike';
-import IElementLike                      from '../../ParentNodeLike/ElementLike/IElementLike';
-import INonDocumentTypeChildNodeLike     from '../../INonDocumentTypeChildNodeLike';
-import isIElementLike                    from '../../../TypeGuards/isIElementLike';
-class ProcessingInstructionLike extends AbstractProcessingInstructionLike {
+import {
+  AbstractProcessingInstructionLike,
+} from './AbstractProcessingInstructionLike';
+import {
+  IDocumentLike,
+} from '../../ParentNodeLike/DocumentLike/IDocumentLike';
+import {
+  IElementLike,
+} from '../../ParentNodeLike/ElementLike/IElementLike';
+import {
+  INonDocumentTypeChildNodeLike,
+} from '../../INonDocumentTypeChildNodeLike';
+import {
+  isIElementLike,
+} from '../../../TypeGuards/isIElementLike';
+
+export class ProcessingInstructionLike extends AbstractProcessingInstructionLike {
   get nodeType(): 7 {
     return 7;
   }

@@ -57,14 +57,17 @@ import {
 const voidElements = require('void-elements');
 
 export abstract class AbstractElementLike extends MParentNodeLike(MChildNodeLike(<TConstructor<AbstractNodeLike>>AbstractNodeLike)) implements IElementLike {
+  abstract nodeType:                        1;
+  protected __tagName:                      string;
+  abstract tagName:                         string;
   abstract textContent:                     string;
   abstract innerHTML:                       string;
   abstract outerHTML:                       string;
   protected __attributes:                   Map<string, IAttributeLike> = Map([]);  
   abstract readonly attributes:             object;
-  abstract readonly tagName:                string;
   abstract readonly id:                     string;
   abstract readonly className:              string;
+  protected __classList:                    IClassListLike = new ClassListLike(this);
   abstract readonly classList:              IClassListLike;
   protected __ownerDocument:                IDocumentLike;
   abstract readonly ownerDocument:          IDocumentLike;
@@ -76,7 +79,6 @@ export abstract class AbstractElementLike extends MParentNodeLike(MChildNodeLike
   abstract readonly lastChild:              INonDocumentTypeChildNodeLike | null;
   abstract readonly previousElementSibling: IElementLike | null;
   abstract readonly nextElementSibling:     IElementLike | null;
-  protected __classList:                    IClassListLike = new ClassListLike(this);
 
   constructor(tagName: string, document: IDocumentLike) {
     super();

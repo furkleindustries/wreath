@@ -1,9 +1,18 @@
-import IDocumentLike from '../NodeLike/ParentNodeLike/DocumentLike/IDocumentLike';
-import IElementLike  from '../NodeLike/ParentNodeLike/ElementLike/IElementLike';
-import nodeFactory   from './nodeFactory';
-import TPassage      from '../TypeAliases/TPassage';
-function passageDataFactory(
-  passage: TPassage,
+import {
+  IDocumentLike,
+} from '../NodeLike/ParentNodeLike/DocumentLike/IDocumentLike';
+import {
+  IElementLike,
+} from '../NodeLike/ParentNodeLike/ElementLike/IElementLike';
+import {
+  IPassage,
+} from '../Passage/IPassage';
+import {
+  nodeFactory,
+} from './nodeFactory';
+
+export function passageDataFactory(
+  passage:  IPassage,
   document: IDocumentLike): IElementLike
 {
   const passageData = document.createElement('tw-passagedata');

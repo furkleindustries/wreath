@@ -1,7 +1,15 @@
-import IDocumentLike                 from '../ParentNodeLike/DocumentLike/IDocumentLike';
-import IElementLike                  from '../ParentNodeLike/ElementLike/IElementLike';
-import INonDocumentTypeChildNodeLike from '../INonDocumentTypeChildNodeLike';
-interface ICharacterDataLike extends INonDocumentTypeChildNodeLike {
+import {
+  IDocumentLike,
+} from '../ParentNodeLike/DocumentLike/IDocumentLike';
+import {
+  IElementLike,
+} from '../ParentNodeLike/ElementLike/IElementLike';
+import {
+  INonDocumentTypeChildNodeLike,
+} from '../INonDocumentTypeChildNodeLike';
+
+
+export interface ICharacterDataLike extends INonDocumentTypeChildNodeLike {
   data:                                       string;
   readonly length:                            number;
   readonly ownerDocument:                     IDocumentLike;

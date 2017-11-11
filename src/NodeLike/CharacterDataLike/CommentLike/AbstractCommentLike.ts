@@ -1,7 +1,14 @@
-import AbstractCharacterDataLike     from '../AbstractCharacterDataLike';
-import ICommentLike                  from './ICommentLike';
-import TConstructor                  from '../../../TypeAliases/TConstructor';
-abstract class AbstractCommentLike extends AbstractCharacterDataLike implements ICommentLike {
+import {
+  AbstractCharacterDataLike,
+} from '../AbstractCharacterDataLike';
+import {
+  ICommentLike,
+} from './ICommentLike';
+import {
+  TConstructor,
+} from '../../../TypeAliases/TConstructor';
+
+export abstract class AbstractCommentLike extends AbstractCharacterDataLike implements ICommentLike {
   abstract readonly nodeType: 8;
   abstract readonly nodeName: '#comment';
 
@@ -15,6 +22,10 @@ abstract class AbstractCommentLike extends AbstractCharacterDataLike implements 
     const ctor = <TConstructor<ICommentLike>>this.constructor;
     const comment = new ctor(this.__data);
     return comment;
+  }
+
+  __flushToHtml(): string {
+    return `<!--${this.data}-->`;
   }
 }
 

@@ -5,14 +5,14 @@ import {
   IDocumentLike,
 } from '../NodeLike/ParentNodeLike/DocumentLike/IDocumentLike';
 
-export function documentConstructor(): IDocumentLike {
+export function documentGetter(): IDocumentLike {
   // @ts-ignore
-  if (typeof Document === 'function') {
+  if (typeof document === 'function') {
     // @ts-ignore
-    return new Document();
+    return document;
   } else {
     return new DocumentLike();
   }
 }
 
-export default documentConstructor;
+export default documentGetter;

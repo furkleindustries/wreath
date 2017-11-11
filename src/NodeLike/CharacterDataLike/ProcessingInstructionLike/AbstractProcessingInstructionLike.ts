@@ -1,7 +1,14 @@
-import AbstractCharacterDataLike  from '../AbstractCharacterDataLike';
-import IDocumentLike              from '../../ParentNodeLike/DocumentLike/IDocumentLike';
-import IProcessingInstructionLike from './IProcessingInstructionLike';
-abstract class AbstractProcessingInstructionLike extends AbstractCharacterDataLike implements IProcessingInstructionLike {
+import {
+  AbstractCharacterDataLike,
+} from '../AbstractCharacterDataLike';
+import {
+  IDocumentLike,
+} from '../../ParentNodeLike/DocumentLike/IDocumentLike';
+import {
+  IProcessingInstructionLike,
+} from './IProcessingInstructionLike';
+
+export abstract class AbstractProcessingInstructionLike extends AbstractCharacterDataLike implements IProcessingInstructionLike {
   abstract readonly nodeType: 7;
   abstract target:            string;  
   protected __target:         string = '';
@@ -16,6 +23,10 @@ abstract class AbstractProcessingInstructionLike extends AbstractCharacterDataLi
     return this.ownerDocument.createProcessingInstruction(
       this.target,
       this.data);
+  }
+
+  __flushToHtml(): string {
+    return `<?${this.target} ${this.data}?>`;
   }
 }
 

@@ -1,6 +1,11 @@
-import IChildNodeLike from '../IChildNodeLike';
-import IElementLike   from '../ParentNodeLike/ElementLike/IElementLike';
-interface IDocumentTypeLike extends IChildNodeLike {
+import {
+  IChildNodeLike,
+} from '../IChildNodeLike';
+import {
+  IElementLike,
+} from '../ParentNodeLike/ElementLike/IElementLike';
+
+export interface IDocumentTypeLike extends IChildNodeLike {
   readonly name:                           string;
   readonly publicId:                       '';
   readonly systemId:                       '';

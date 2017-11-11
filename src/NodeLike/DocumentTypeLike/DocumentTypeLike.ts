@@ -1,7 +1,14 @@
-import AbstractDocumentTypeLike from './AbstractDocumentTypeLike';
-import IDocumentLike        from '../ParentNodeLike/DocumentLike/IDocumentLike';
-import IElementLike         from '../ParentNodeLike/ElementLike/IElementLike';
-class DocumentTypeLike extends AbstractDocumentTypeLike {
+import {
+  AbstractDocumentTypeLike,
+} from './AbstractDocumentTypeLike';
+import {
+  IDocumentLike,
+} from '../ParentNodeLike/DocumentLike/IDocumentLike';
+import {
+  IElementLike,
+} from '../ParentNodeLike/ElementLike/IElementLike';
+
+export class DocumentTypeLike extends AbstractDocumentTypeLike {
   get nodeType(): 10 {
     return 10;
   }

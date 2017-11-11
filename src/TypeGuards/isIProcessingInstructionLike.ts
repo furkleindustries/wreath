@@ -1,5 +1,8 @@
-import IProcessingInstructionLike from '../NodeLike/CharacterDataLike/ProcessingInstructionLike/IProcessingInstructionLike';
-function isIProcessingInstructionLike(node: any): node is IProcessingInstructionLike {
+import {
+  IProcessingInstructionLike,
+} from '../NodeLike/CharacterDataLike/ProcessingInstructionLike/IProcessingInstructionLike';
+
+export function isIProcessingInstructionLike(node: any): node is IProcessingInstructionLike {
   return node && node.nodeType === 7;
 }
 

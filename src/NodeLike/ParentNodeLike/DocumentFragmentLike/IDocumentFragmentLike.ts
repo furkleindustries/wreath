@@ -15,27 +15,27 @@ import {
 } from '../IQueryable';
 
 export interface IDocumentFragmentLike extends IParentNodeLike, IQueryable {
-  readonly nodeType:                11;
-  readonly nodeValue:               null;
-  readonly textContent:             null;
-  readonly ownerDocument:           IDocumentLike;
-  readonly parentNode:              null;
-  readonly childNodes:              Array<INonDocumentTypeChildNodeLike>;
-  readonly firstChild:              INonDocumentTypeChildNodeLike | null;
-  readonly lastChild:               INonDocumentTypeChildNodeLike | null;
-  readonly previousSibling:         null;
-  readonly nextSibling:             null;
+  readonly nodeType:               11;
+  readonly nodeValue:              null;
+  readonly textContent:            null;
+  readonly ownerDocument:          IDocumentLike;
+  readonly parentNode:             null;
+  readonly childNodes:             Array<INonDocumentTypeChildNodeLike>;
+  readonly firstChild:             INonDocumentTypeChildNodeLike | null;
+  readonly lastChild:              INonDocumentTypeChildNodeLike | null;
+  readonly previousSibling:        null;
+  readonly nextSibling:            null;
   
   getElementsByTagName(
-    tagName: string):               Array<IElementLike>;
+    tagName: string):              Array<IElementLike>;
 
-  getElementById(id: string):       IElementLike | null;
+  getElementById(id: string):      IElementLike | null;
   getElementsByClassName(
-    className: string):             Array<IElementLike>;
+    className: string):            Array<IElementLike>;
 
-  getElementsByName(name: string):  Array<IElementLike>;
+  getElementsByName(name: string): Array<IElementLike>;
 
-  cloneNode():                      IDocumentFragmentLike;
+  cloneNode():                     IDocumentFragmentLike;
 }
 
 export default IDocumentFragmentLike;

@@ -1,8 +1,11 @@
-import TPassageIgnores from '../TypeAliases/TPassageIgnores';
 import {
   DetectionModes,
   Formats,
 } from '../constants';
+import {
+  TPassageIgnores,
+} from '../TypeAliases/TPassageIgnores';
+
 export interface ILinterOptions {
   detectionMode:       DetectionModes;
   documentConstructor: Function;

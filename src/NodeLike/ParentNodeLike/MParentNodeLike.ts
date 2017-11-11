@@ -1,13 +1,33 @@
-import IChildNodeLike                from '../IChildNodeLike';
-import IDocumentLike                 from './DocumentLike/IDocumentLike';
-import IDocumentTypeLike             from '../DocumentTypeLike/IDocumentTypeLike';
-import IElementLike                  from './ElementLike/IElementLike';
-import INonDocumentTypeChildNodeLike from '../INonDocumentTypeChildNodeLike';
-import isIDocumentLike               from '../../TypeGuards/isIDocumentLike';
-import isIParentNodeLike             from '../../TypeGuards/isIParentNodeLike';
-import IParentNodeLike               from './IParentNodeLike';
-import TConstructor                  from '../../TypeAliases/TConstructor';
-import { OrderedSet, }               from 'immutable';
+import {
+  IChildNodeLike,
+} from '../IChildNodeLike';
+import {
+  IDocumentLike,
+} from './DocumentLike/IDocumentLike';
+import {
+  IDocumentTypeLike,
+} from '../DocumentTypeLike/IDocumentTypeLike';
+import {
+  IElementLike,
+} from './ElementLike/IElementLike';
+import {
+  OrderedSet,
+} from 'immutable';
+import {
+  INonDocumentTypeChildNodeLike,
+} from '../INonDocumentTypeChildNodeLike';
+import {
+  isIDocumentLike,
+} from '../../TypeGuards/isIDocumentLike';
+import {
+  isIParentNodeLike,
+} from '../../TypeGuards/isIParentNodeLike';
+import {
+  IParentNodeLike,
+} from './IParentNodeLike';
+import {
+  TConstructor,
+} from '../../TypeAliases/TConstructor';
 
 export function MParentNodeLike<T extends TConstructor<object>>(Base: T) {
   class MParentNodeLike extends Base {

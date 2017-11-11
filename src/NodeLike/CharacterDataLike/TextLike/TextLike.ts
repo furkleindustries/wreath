@@ -1,9 +1,20 @@
-import AbstractTextLike              from './AbstractTextLike';
-import IDocumentLike                 from '../../ParentNodeLike/DocumentLike/IDocumentLike';
-import IElementLike                  from '../../ParentNodeLike/ElementLike/IElementLike';
-import INonDocumentTypeChildNodeLike from '../../INonDocumentTypeChildNodeLike';
-import isIElementLike                from '../../../TypeGuards/isIElementLike';
-class TextLike extends AbstractTextLike {
+import {
+  AbstractTextLike,
+} from './AbstractTextLike';
+import {
+  IDocumentLike,
+} from '../../ParentNodeLike/DocumentLike/IDocumentLike';
+import {
+  IElementLike,
+} from '../../ParentNodeLike/ElementLike/IElementLike';
+import {
+  INonDocumentTypeChildNodeLike,
+} from '../../INonDocumentTypeChildNodeLike';
+import {
+  isIElementLike,
+} from '../../../TypeGuards/isIElementLike';
+
+export class TextLike extends AbstractTextLike {
   get data(): string {
     return this.__data;
   }

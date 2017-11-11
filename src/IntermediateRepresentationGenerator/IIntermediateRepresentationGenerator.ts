@@ -1,11 +1,11 @@
 import {
-  IIntermediateRepresentationGeneratorOptions,
-} from './IIntermediateRepresentationGeneratorOptions';
+  TIndexableObject,
+} from '../TypeAliases/TIndexableObject';
 
 export interface IIntermediateRepresentationGenerator {
   generate(
     value:   any,
-    options: IIntermediateRepresentationGeneratorOptions): any;
+    options: TIndexableObject): any;
 }
 
 export default IIntermediateRepresentationGenerator;

@@ -1,8 +1,17 @@
-import AbstractDocumentFragmentLike  from './AbstractDocumentFragmentLike';
-import IDocumentLike                 from '../DocumentLike/IDocumentLike';
-import IElementLike                  from '../ElementLike/IElementLike';
-import INonDocumentTypeChildNodeLike from '../../INonDocumentTypeChildNodeLike'
-class DocumentFragmentLike extends AbstractDocumentFragmentLike {
+import {
+  AbstractDocumentFragmentLike,
+} from './AbstractDocumentFragmentLike';
+import {
+  IDocumentLike,
+} from '../DocumentLike/IDocumentLike';
+import {
+  IElementLike,
+} from '../ElementLike/IElementLike';
+import {
+  INonDocumentTypeChildNodeLike,
+} from '../../INonDocumentTypeChildNodeLike';
+
+export class DocumentFragmentLike extends AbstractDocumentFragmentLike {
   get nodeType(): 11 {
     return 11;
   }

@@ -1,4 +1,7 @@
-import { NodeTypes, } from '../constants';
+import {
+  NodeTypes,
+} from '../constants';
+
 export type TPassageIgnores = {
   [key: string]: any,
   nodeTypes:     Array<NodeTypes>;
