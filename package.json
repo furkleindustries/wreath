@@ -1,5 +1,5 @@
 {
-  "name": "twine-linter",
+  "name": "wreath",
   "version": "0.0.1",
   "description": "A basic static analysis tool for Twine, compatible with the Sugarcane, Sugarcube, Harlowe, and Gately formats.",
   "main": "index.js",
@@ -13,9 +13,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/furkle/twine-linter.git"
+    "url": "git+https://github.com/furkleindustries/wreath.git"
   },
   "keywords": [
+    "wreath",
     "twine",
     "twine2",
     "lint",
@@ -29,9 +30,9 @@
   "author": "furkle",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/furkle/twine-linter/issues"
+    "url": "https://github.com/furkleindustries/wreath/issues"
   },
-  "homepage": "https://github.com/furkle/twine-linter#readme",
+  "homepage": "https://github.com/furkleindustries/wreath#readme",
   "devDependencies": {
     "@types/jest": "^21.1.5",
     "@types/node": "^8.0.50",

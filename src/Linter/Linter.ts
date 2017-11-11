@@ -1,7 +1,6 @@
 import {
   DetectionModes,
   Formats,
-  NodeTypes,
   passageIgnores,
 } from '../constants';
 import {
@@ -259,7 +258,7 @@ export class Linter implements ILinter {
       len = tasks.length;
     }
 
-    const stageTwo = this.generateILStageTwo(storyData, opts);
+    const stageTwo = this.generateILStageTwo(stageOne, opts);
     const isolationChambers: Array<IDocumentFragmentLike> = [ stageTwo, ];
     for (let ii = 1; ii < len; ii += 1) {
       isolationChambers.push(stageTwo.cloneNode());

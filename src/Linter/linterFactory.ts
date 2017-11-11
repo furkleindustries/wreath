@@ -1,4 +1,5 @@
 import {
+  DetectionModes,
   Formats,
 } from '../constants';
 import {
@@ -27,8 +28,8 @@ import {
 } from '../Parser/parserFactory';
 
 export function linterFactory(
+  storyData:       IElementLike,
   options:         ILinterOptionsArgument = {},
-  storyData:       IElementLike,  
   formatDetector:  Function = detectFormat,
   versionDetector: Function = detectVersion): ILinter
 {
@@ -68,7 +69,7 @@ export function linterFactory(
   parser = parserFactory(format);
   opts.format = format;
   opts.version = version;
-  opts.detectionMode = options.detectionMode || 'manual';
+  opts.detectionMode = <DetectionModes>(options.detectionMode || 'manual');
   opts.documentConstructor = options.documentConstructor;
   return new Linter(parser, opts);
 }
