@@ -25,6 +25,15 @@ import {
 import {
   INonDocumentTypeChildNodeLike,
 } from '../../INonDocumentTypeChildNodeLike';
+import {
+  nodeFactory,
+} from '../../../modules/nodeFactory';
+import {
+  parse as parseHtml,
+} from '../../../PEG/HtmlParser';
+import {
+  TAbstractSyntaxContent,
+} from '../../../TypeAliases/TAbstractSyntaxContent';
 
 export class ElementLike extends AbstractElementLike {
   get nodeType(): 1 {
@@ -55,8 +64,26 @@ export class ElementLike extends AbstractElementLike {
     }, '');
   }
 
+  set innerHTML(html: string) {
+    this.__childNodes.forEach((node: INonDocumentTypeChildNodeLike) => {
+      this.removeChild(node);
+    });
+
+    parseHtml(html).forEach((content: TAbstractSyntaxContent) => {
+      this.appendChild(nodeFactory(content, this.ownerDocument));
+    });
+  }
+
   get outerHTML(): string {
     return this.__flushToHtml();
+  }
+
+  set outerHTML(html: string) {
+    const nodes = parseHtml(html).map((content: TAbstractSyntaxContent) => {
+      return nodeFactory(content, this.ownerDocument);
+    });
+
+    this.replaceWith(...nodes);
   }
 
   set textContent(content: string) {

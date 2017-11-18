@@ -1,10 +1,23 @@
-import AbstractCommentLike           from './AbstractCommentLike';
-import IChildNodeLike                from '../../IChildNodeLike';
-import IDocumentLike                 from '../../ParentNodeLike/DocumentLike/IDocumentLike';
-import IElementLike                  from '../../ParentNodeLike/ElementLike/IElementLike';
-import INonDocumentTypeChildNodeLike from '../../INonDocumentTypeChildNodeLike';
-import isIElementLike                from '../../../TypeGuards/isIElementLike';
-class CommentLike extends AbstractCommentLike {
+import {
+  AbstractCommentLike,
+} from './AbstractCommentLike';
+import {
+  IChildNodeLike,
+} from '../../IChildNodeLike';
+import {
+  IDocumentLike,
+} from '../../ParentNodeLike/DocumentLike/IDocumentLike';
+import {
+  IElementLike,
+} from '../../ParentNodeLike/ElementLike/IElementLike';
+import {
+  INonDocumentTypeChildNodeLike,
+} from '../../INonDocumentTypeChildNodeLike';
+import {
+  isIElementLike,
+} from '../../../TypeGuards/isIElementLike';
+
+export class CommentLike extends AbstractCommentLike {
   get nodeType(): 8 {
     return 8;
   }

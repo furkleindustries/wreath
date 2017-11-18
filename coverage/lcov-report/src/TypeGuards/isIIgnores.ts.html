@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/TypeGuards/isIIgnores.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">src/TypeGuards</a> isIIgnores.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">33.33% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>3/9</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/40</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/5</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">33.33% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>3/9</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import {
+  NodeTypes,
+} from '../constants';
+import {
+  IIgnores,
+} from '../Ignores/IIgnores';
+import {
+  TIndexableObject,
+} from '../TypeAliases/TIndexableObject';
+&nbsp;
+<span class="fstat-no" title="function not covered" >export function isIIgnores(</span>ignores: any): ignores is IIgnores {
+  const nodeTypes = <span class="cstat-no" title="statement not covered" >Object.values&lt;number&gt;(&lt;TIndexableObject&gt;NodeTypes);</span>
+<span class="cstat-no" title="statement not covered" >  return ignores /* ignores is truthy. */ &amp;&amp;</span>
+    /* ignores is an object (and not null given the before). */
+    typeof ignores === 'object' &amp;&amp;
+    /* ignores.nodeTypes is an object. */
+    typeof ignores.nodeTypes === 'object' &amp;&amp;
+    /* ignores.nodeTypes has a length which is a number greater than or
+     * equal to 0. */
+    ignores.nodeTypes.length &gt;= 0 &amp;&amp;
+    /* ignores.nodeTypes.length is an integer. */
+    ignores.nodeTypes.length % 1 === 0 &amp;&amp;
+    /* ignores.nodeTypes.filter is a function. */
+    typeof ignores.nodeTypes.filter === 'function' &amp;&amp;
+    /* ignores.nodeTypes.forEach is a function. */
+    typeof ignores.nodeTypes.forEach === 'function' &amp;&amp;
+    /* ignores.nodeTypes.map is a function. */
+    typeof ignores.nodeTypes.map === 'function' &amp;&amp;
+    /* ignores.nodeTypes.reduce is a function. */
+    typeof ignores.nodeTypes.reduce === 'function' &amp;&amp;
+    /* None of the items in ignores.nodeTypes are outside the NodeTypes 
+     * enum. */
+    ignores.nodeTypes.filter(<span class="fstat-no" title="function not covered" >(a</span>a: number) =&gt; <span class="cstat-no" title="statement not covered" >nodeTypes.indexOf(aa) === -1)</span>.length === 0 &amp;&amp;
+    /* ignores.elementTags is truthy. */
+    ignores.elementTags &amp;&amp;
+    /* ignores.elementTags is an object (and not null given the before). */
+    typeof ignores.elementTags === 'object' &amp;&amp;
+    /* ignores.elementTags has a length which is a number greater than or
+     * equal to 0. */
+    ignores.elementTags.length % 1 === 0 &amp;&amp;
+    /* ignores.elementTags.filter is a function. */
+    typeof ignores.elementTags.filter === 'function' &amp;&amp;
+    /* ignores.elementTags.forEach is a function. */
+    typeof ignores.elementTags.forEach === 'function' &amp;&amp;
+    /* ignores.elementTags.map is a function. */
+    typeof ignores.elementTags.map === 'function' &amp;&amp;
+    /* ignores.elementTags.reduce is a function. */
+    typeof ignores.elementTags.reduce === 'function' &amp;&amp;
+    /* All of the items in ignores.elementTags are strings with content. */
+    ignores.elementTags.filter(<span class="fstat-no" title="function not covered" >(a</span>a: string) =&gt; <span class="cstat-no" title="statement not covered" >aa &amp;&amp; typeof aa === 'string')</span>.length === 0 &amp;&amp;
+    /* ignores.passageNames is truthy. */
+    ignores.passageNames &amp;&amp;
+    /* ignores.passageNames is an object (and not null given the before). */
+    typeof ignores.passageNames === 'object' &amp;&amp;
+    /* ignores.passageNames has a length which is a number greater than or
+     * equal to 0. */
+    ignores.passageNames.length % 1 === 0 &amp;&amp;
+    /* ignores.passageNames.filter is a function. */
+    typeof ignores.passageNames.filter === 'function' &amp;&amp;
+    /* ignores.passageNames.forEach is a function. */
+    typeof ignores.passageNames.forEach === 'function' &amp;&amp;
+    /* ignores.passageNames.map is a function. */
+    typeof ignores.passageNames.map === 'function' &amp;&amp;
+    /* ignores.passageNames.reduce is a function. */
+    typeof ignores.passageNames.reduce === 'function' &amp;&amp;
+    /* All of the items in ignores.passageNames are strings with content. */
+    ignores.passageNames.filter(<span class="fstat-no" title="function not covered" >(a</span>a: string) =&gt; <span class="cstat-no" title="statement not covered" >aa &amp;&amp; typeof aa === 'string')</span>.length === 0 &amp;&amp;
+    /* ignores.passageTags is truthy. */
+    ignores.passageTags &amp;&amp;
+    /* ignores.passageTags is an object (and not null given the before). */
+    typeof ignores.passageTags === 'object' &amp;&amp;
+    /* ignores.passageTags has a length which is a number greater than or
+     * equal to 0. */
+    ignores.passageTags.length % 1 === 0 &amp;&amp;
+    /* ignores.passageTags.filter is a function. */
+    typeof ignores.passageTags.filter === 'function' &amp;&amp;
+    /* ignores.passageTags.forEach is a function. */
+    typeof ignores.passageTags.forEach === 'function' &amp;&amp;
+    /* ignores.passageTags.map is a function. */
+    typeof ignores.passageTags.map === 'function' &amp;&amp;
+    /* ignores.passageTags.reduce is a function. */
+    typeof ignores.passageTags.reduce === 'function' &amp;&amp;
+    /* All of the items in ignores.passageTags are strings with content. */
+    ignores.passageTags.filter(<span class="fstat-no" title="function not covered" >(a</span>a: string) =&gt; <span class="cstat-no" title="statement not covered" >aa &amp;&amp; typeof aa === 'string')</span>.length === 0;
+}
+&nbsp;
+export default isIIgnores;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Nov 18 2017 18:29:41 GMT-0500 (EST)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

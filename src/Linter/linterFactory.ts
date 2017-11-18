@@ -70,7 +70,7 @@ export function linterFactory(
   opts.format = format;
   opts.version = version;
   opts.detectionMode = <DetectionModes>(options.detectionMode || 'manual');
-  opts.documentConstructor = options.documentConstructor;
+  opts.documentGetter = options.documentGetter;
   return new Linter(parser, opts);
 }
 

@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">5.88% </span>
+        <span class="strong">7.25% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>4/68</span>
+        <span class='fraction'>5/69</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>0/13</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">5.88% </span>
+        <span class="strong">7.25% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>4/68</span>
+        <span class='fraction'>5/69</span>
       </div>
     </div>
   </div>
@@ -230,12 +230,59 @@
 185
 186
 187
-188</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -254,9 +301,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -270,6 +314,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -417,20 +463,41 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span></td><td class="text"><pre class="prettyprint lang-js">import IChildNodeLike                from './IChildNodeLike';
-import IDocumentFragmentLike         from './ParentNodeLike/DocumentFragmentLike/IDocumentFragmentLike';
-import IDocumentLike                 from './ParentNodeLike/DocumentLike/IDocumentLike';
-import IElementLike                  from './ParentNodeLike/ElementLike/IElementLike';
-import IParentNodeLike               from './ParentNodeLike/IParentNodeLike';
-import isIChildNodeLike              from '../TypeGuards/isIChildNodeLike';
-import isIDocumentLike               from '../TypeGuards/isIDocumentLike';
-import INodeLike                     from './INodeLike';
-import INonDocumentTypeChildNodeLike from './INonDocumentTypeChildNodeLike';
-import TMatcher                      from '../TypeAliases/TMatcher'
+<span class="cline-any cline-yes">2x</span></td><td class="text"><pre class="prettyprint lang-js">import {
+  IChildNodeLike,
+} from './IChildNodeLike';
+import {
+  IDocumentFragmentLike,
+} from './ParentNodeLike/DocumentFragmentLike/IDocumentFragmentLike';
+import {
+  IDocumentLike,
+} from './ParentNodeLike/DocumentLike/IDocumentLike';
+import {
+  IElementLike,
+} from './ParentNodeLike/ElementLike/IElementLike';
+import {
+  IParentNodeLike
+} from './ParentNodeLike/IParentNodeLike';
+import {
+  isIChildNodeLike,
+} from '../TypeGuards/isIChildNodeLike';
+import {
+  isIDocumentLike,
+} from '../TypeGuards/isIDocumentLike';
+import {
+  INodeLike,
+} from './INodeLike';
+import {
+  INonDocumentTypeChildNodeLike,
+} from './INonDocumentTypeChildNodeLike';
+import {
+  IMatcher,
+} from '../Matcher/IMatcher'
 import {
   OrderedSet,
 } from 'immutable';
-<span class="fstat-no" title="function not covered" >abstract class AbstractNodeLike implements INodeLike {</span>
+&nbsp;
+<span class="fstat-no" title="function not covered" >export abstract class AbstractNodeLike implements INodeLike {</span>
   abstract textContent:                 string | null;
   abstract readonly ownerDocument:      IDocumentLike | null;
   abstract readonly parentNode:         IParentNodeLike | null;
@@ -474,6 +541,8 @@ import {
     oldNode: IChildNodeLike,
     newNode: IDocumentFragmentLike |
       IChildNodeLike):                              IDocumentFragmentLike | IChildNodeLike;
+&nbsp;
+  abstract __flushToHtml():                         string;
 &nbsp;
 <span class="fstat-no" title="function not covered" >  contains</span>(node: IChildNodeLike): boolean {
 <span class="cstat-no" title="statement not covered" >    return __recurse(this, node);</span>
@@ -595,7 +664,7 @@ import {
 <span class="cstat-no" title="statement not covered" >    return nextSibling;</span>
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  __getMatcher</span>(): TMatcher {
+<span class="fstat-no" title="function not covered" >  __getMatcher</span>(): IMatcher {
 <span class="cstat-no" title="statement not covered" >    if (!this.ownerDocument) {</span>
 <span class="cstat-no" title="statement not covered" >      throw new Error('This node has no owner document.');</span>
     }
@@ -610,7 +679,7 @@ export default AbstractNodeLike;</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Nov 10 2017 04:00:11 GMT-0500 (EST)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Nov 18 2017 18:29:41 GMT-0500 (EST)
 </div>
 </div>
 <script src="../../prettify.js"></script>

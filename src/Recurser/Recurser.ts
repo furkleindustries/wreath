@@ -1,4 +1,7 @@
 import {
+  Formats,
+} from '../constants';
+import {
   INodeLike,
 } from '../NodeLike/INodeLike';
 import {
@@ -11,7 +14,7 @@ import {
 export class Recurser implements IRecurser {
   leftTopRecurse(
     node:     INodeLike,
-    format:   string,
+    format:   Formats,
     version:  string,
     callback: Function,
     options?: TIndexableObject,
@@ -26,7 +29,7 @@ export class Recurser implements IRecurser {
 
   leftBottomRecurse(
     node:     INodeLike,
-    format:   string,
+    format:   Formats,
     version:  string,
     callback: Function,
     options?: TIndexableObject,
@@ -42,7 +45,7 @@ export class Recurser implements IRecurser {
 
   rightTopRecurse(
     node:     INodeLike,
-    format:   string,
+    format:   Formats,
     version:  string,
     callback: Function,
     options?: TIndexableObject,
@@ -57,7 +60,7 @@ export class Recurser implements IRecurser {
 
   rightBottomRecurse(
     element:  INodeLike,
-    format:   string,
+    format:   Formats,
     version:  string,
     callback: Function,
     options?: TIndexableObject,

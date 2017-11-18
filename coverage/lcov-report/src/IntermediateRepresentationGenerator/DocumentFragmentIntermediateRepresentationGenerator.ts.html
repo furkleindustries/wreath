@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/modules/storyDataFactory.ts</title>
+    <title>Code coverage report for src/IntermediateRepresentationGenerator/DocumentFragmentIntermediateRepresentationGenerator.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,28 +16,28 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">All files</a> / <a href="index.html">src/modules</a> storyDataFactory.ts
+      <a href="../../index.html">All files</a> / <a href="index.html">src/IntermediateRepresentationGenerator</a> DocumentFragmentIntermediateRepresentationGenerator.ts
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">23.08% </span>
+        <span class="strong">33.33% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>3/13</span>
+        <span class='fraction'>4/12</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/2</span>
+        <span class='fraction'>0/6</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/2</span>
+        <span class='fraction'>0/1</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">23.08% </span>
+        <span class="strong">33.33% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>3/13</span>
+        <span class='fraction'>4/12</span>
       </div>
     </div>
   </div>
@@ -76,7 +76,23 @@
 31
 32
 33
-34</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -88,16 +104,18 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -107,42 +125,63 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import {
+  IDocumentFragmentLike,
+} from '../NodeLike/ParentNodeLike/DocumentFragmentLike/IDocumentFragmentLike';
+import {
   IDocumentLike,
 } from '../NodeLike/ParentNodeLike/DocumentLike/IDocumentLike';
 import {
-  IElementLike,
-} from '../NodeLike/ParentNodeLike/ElementLike/IElementLike';
+  IIntermediateRepresentationGenerator,
+} from './IIntermediateRepresentationGenerator';
 import {
   IPassage,
 } from '../Passage/IPassage';
 import {
-  passageDataFactory,
-} from './passageDataFactory';
+  isIDocumentLike,
+} from '../TypeGuards/isIDocumentLike';
+import {
+  storyDataFactory,
+} from '../modules/storyDataFactory';
+import {
+  TIndexableObject,
+} from '../TypeAliases/TIndexableObject';
 &nbsp;
-<span class="fstat-no" title="function not covered" >export function storyDataFactory(</span>
-  passages: Array&lt;IPassage&gt;,
-  document: IDocumentLike): IElementLike
-{
-  const storyData = <span class="cstat-no" title="statement not covered" >document.createElement('tw-storydata');</span>
-  let counter = <span class="cstat-no" title="statement not covered" >0;</span>
-  const nodes = <span class="cstat-no" title="statement not covered" >passages.map(<span class="fstat-no" title="function not covered" >(p</span>assage) =&gt; {</span>
-    let passageName = <span class="cstat-no" title="statement not covered" >passage.passageName;</span>
-<span class="cstat-no" title="statement not covered" >    if (!passageName) {</span>
-<span class="cstat-no" title="statement not covered" >      passageName = `UNKNOWN_${counter}`;</span>
-<span class="cstat-no" title="statement not covered" >      counter += 1;</span>
+export class DocumentFragmentIntermediateRepresentationGenerator implements IIntermediateRepresentationGenerator {
+<span class="fstat-no" title="function not covered" >  generate</span>(
+    passages: Array&lt;IPassage&gt;,
+    options:  TIndexableObject): IDocumentFragmentLike
+  {
+    let doc: IDocumentLike | null = <span class="cstat-no" title="statement not covered" >null;</span>
+<span class="cstat-no" title="statement not covered" >    if (options.documentConstructor &amp;&amp;</span>
+      typeof options.documentConstructor === 'function')
+    {
+<span class="cstat-no" title="statement not covered" >      doc = options.documentConstructor();</span>
     }
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    return passageDataFactory(passage, document);</span>
-  });
-&nbsp;
-<span class="cstat-no" title="statement not covered" >  storyData.append(...nodes);</span>
-<span class="cstat-no" title="statement not covered" >  return storyData;</span>
+  
+<span class="cstat-no" title="statement not covered" >    if (!isIDocumentLike(doc)) {</span>
+<span class="cstat-no" title="statement not covered" >      throw new Error('The documentConstructor argument did not produce a ' +</span>
+                      'valid document.');
+    }
+  
+    const docFragment = <span class="cstat-no" title="statement not covered" >doc.createDocumentFragment();</span>
+<span class="cstat-no" title="statement not covered" >    docFragment.append(storyDataFactory(passages, doc));</span>
+<span class="cstat-no" title="statement not covered" >    return docFragment;</span>
+  }
+  
 }
 &nbsp;
-export default storyDataFactory;</pre></td></tr>
+export default DocumentFragmentIntermediateRepresentationGenerator;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
