@@ -4,8 +4,8 @@ import {
   ignores,
 } from '../constants';
 import {
-  ArrayIntermediateRepresentationGenerator,
-} from '../IntermediateRepresentationGenerator/ArrayIntermediateRepresentationGenerator';
+  ArrayIRGenerator,
+} from '../IRGenerator/ArrayIRGenerator';
 import {
   detectFormat,
 } from '../modules/detectFormat';
@@ -13,11 +13,11 @@ import {
   detectVersion,
 } from '../modules/detectVersion';
 import {
-  documentGetter,
-} from '../modules/documentGetter';
+  documentFactory,
+} from '../modules/documentFactory';
 import {
-  DocumentFragmentIntermediateRepresentationGenerator,
-} from '../IntermediateRepresentationGenerator/DocumentFragmentIntermediateRepresentationGenerator';
+  DocumentFragmentIRGenerator,
+} from '../IRGenerator/DocumentFragmentIRGenerator';
 import {
   IDocumentFragmentLike,
 } from '../NodeLike/ParentNodeLike/DocumentFragmentLike/IDocumentFragmentLike';
@@ -64,13 +64,14 @@ import {
   Recurser,
 } from '../Recurser/Recurser';    
 import {
+  valid,
+} from 'semver';
+import {
   TIndexableObject,
 } from '../TypeAliases/TIndexableObject';
 import {
   TStringMap,
 } from '../TypeAliases/TStringMap';
-
-const semver = require('semver');
 
 export class Linter implements ILinter {
   readonly options: ILinterOptions = <ILinterOptions>{};
@@ -82,7 +83,7 @@ export class Linter implements ILinter {
       'The storyData argument was an empty string.',
 
     LINT_DOCUMENT_GETTER_INVALID:
-      'The documentGetter option was not a function.',
+      'The documentFactory option was not a function.',
 
     LINT_STORY_DATA_INVALID:
       'The storyData argument passed to this Linter\'s lint method was not ' +
@@ -121,11 +122,11 @@ export class Linter implements ILinter {
       'constants.DetectionModes.',
 
     MERGE_OPTIONS_ARGS_DOCUMENT_GETTER_INVALID:
-      'The documentGetter property was present in the options argument, but ' +
+      'The documentFactory property was present in the options argument, but ' +
       'it was not a function.',
 
     MERGE_OPTIONS_THIS_DOCUMENT_GETTER_INVALID:
-      'The options.documentGetter property of this Linter was not a function.',
+      'The options.documentFactory property of this Linter was not a function.',
 
     MERGE_OPTIONS_ARGS_FORMAT_INVALID:
       'The format property was present in the options argument, but it was ' +
@@ -220,11 +221,11 @@ export class Linter implements ILinter {
     if (typeof storyData === 'string') {
       if (!storyData) {
         throw new Error(Linter.strings.LINT_STORY_DATA_EMPTY_STRING);
-      } else if (typeof copy.documentGetter !== 'function') {
+      } else if (typeof copy.documentFactory !== 'function') {
         throw new Error(Linter.strings.LINT_DOCUMENT_GETTER_INVALID);
       }
 
-      const doc = copy.documentGetter();
+      const doc = copy.documentFactory();
       if (!isIDocumentLike(doc)) {
         throw new Error(Linter.strings.LINT_DOCUMENT_INVALID);
       }
@@ -337,20 +338,20 @@ export class Linter implements ILinter {
       opts.detectionMode = DetectionModes.Manual;
     }
 
-    if ('documentGetter' in argOpts) {
-      if (typeof argOpts.documentGetter !== 'function') {
+    if ('documentFactory' in argOpts) {
+      if (typeof argOpts.documentFactory !== 'function') {
         throw new Error(
           Linter.strings.MERGE_OPTIONS_ARGS_DOCUMENT_GETTER_INVALID);
       }
 
-      opts.documentGetter = argOpts.documentGetter;
-    } else if ('documentGetter' in opts) {
-      if (typeof opts.documentGetter !== 'function') {
+      opts.documentFactory = argOpts.documentFactory;
+    } else if ('documentFactory' in opts) {
+      if (typeof opts.documentFactory !== 'function') {
         throw new Error(
           Linter.strings.MERGE_OPTIONS_THIS_DOCUMENT_GETTER_INVALID);
       }
     } else {
-      opts.documentGetter = documentGetter;
+      opts.documentFactory = documentFactory;
     }
 
     if ('format' in argOpts) {
@@ -418,7 +419,7 @@ export class Linter implements ILinter {
     if ('version' in argOpts) {
       if (!argOpts.version || typeof argOpts.version !== 'string') {
         throw new Error(Linter.strings.MERGE_OPTIONS_ARGS_VERSION_INVALID);
-      } else if (!semver.valid(argOpts.version)) {
+      } else if (!valid(argOpts.version)) {
         throw new Error(Linter.strings.MERGE_OPTIONS_ARGS_VERSION_NOT_SEMANTIC);
       }
 
@@ -426,7 +427,7 @@ export class Linter implements ILinter {
     } else if ('version' in opts) {
       if (!opts.version || typeof opts.version !== 'string') {
         throw new Error(Linter.strings.MERGE_OPTIONS_THIS_VERSION_INVALID);
-      } else if (!semver.valid(opts.version)) {
+      } else if (!valid(opts.version)) {
         throw new Error(
           Linter.strings.MERGE_OPTIONS_THIS_VERSION_NOT_SEMANTIC);
       }
@@ -480,8 +481,6 @@ export class Linter implements ILinter {
         const tagName = childNode.tagName.toLowerCase();
         if (copy.ignores.elementTags.indexOf(tagName) !== -1) {
           return false;
-        } else if (tagName !== 'tw-passagedata') {
-          return true;
         }
 
         const passageName = (childNode.getAttribute('name') || '').toLowerCase();
@@ -525,7 +524,7 @@ export class Linter implements ILinter {
       this.mergeOptions(tempOpts);
     const opts = Map<string, any>(_opts);
     const copy = <ILinterOptions>opts.toObject();
-    const gen = new ArrayIntermediateRepresentationGenerator();
+    const gen = new ArrayIRGenerator();
     return gen.generate(storyData, copy);
   }
 
@@ -539,7 +538,7 @@ export class Linter implements ILinter {
       this.mergeOptions(tempOpts);
     const opts = Map<string, any>(_opts);
     const copy = <ILinterOptions>opts.toObject();
-    const gen = new DocumentFragmentIntermediateRepresentationGenerator();
+    const gen = new DocumentFragmentIRGenerator();
     return gen.generate(passages, copy);
   }
 

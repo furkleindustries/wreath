@@ -22,12 +22,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>294/294</span>
+        <span class='fraction'>292/292</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>214/214</span>
+        <span class='fraction'>212/212</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>294/294</span>
+        <span class='fraction'>292/292</span>
       </div>
     </div>
   </div>
@@ -830,8 +830,7 @@
 785
 786
 787
-788
-789</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+788</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -896,14 +895,15 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">107x</span>
@@ -1313,24 +1313,22 @@
 <span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -1339,12 +1337,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1625,8 +1623,8 @@
   ignores,
 } from '../constants';
 import {
-  ArrayIntermediateRepresentationGenerator,
-} from '../IntermediateRepresentationGenerator/ArrayIntermediateRepresentationGenerator';
+  ArrayIRGenerator,
+} from '../IRGenerator/ArrayIRGenerator';
 import {
   detectFormat,
 } from '../modules/detectFormat';
@@ -1634,11 +1632,11 @@ import {
   detectVersion,
 } from '../modules/detectVersion';
 import {
-  documentGetter,
-} from '../modules/documentGetter';
+  documentFactory,
+} from '../modules/documentFactory';
 import {
-  DocumentFragmentIntermediateRepresentationGenerator,
-} from '../IntermediateRepresentationGenerator/DocumentFragmentIntermediateRepresentationGenerator';
+  DocumentFragmentIRGenerator,
+} from '../IRGenerator/DocumentFragmentIRGenerator';
 import {
   IDocumentFragmentLike,
 } from '../NodeLike/ParentNodeLike/DocumentFragmentLike/IDocumentFragmentLike';
@@ -1685,13 +1683,14 @@ import {
   Recurser,
 } from '../Recurser/Recurser';    
 import {
+  valid,
+} from 'semver';
+import {
   TIndexableObject,
 } from '../TypeAliases/TIndexableObject';
 import {
   TStringMap,
 } from '../TypeAliases/TStringMap';
-&nbsp;
-const semver = require('semver');
 &nbsp;
 export class Linter implements ILinter {
   readonly options: ILinterOptions = &lt;ILinterOptions&gt;{};
@@ -1703,7 +1702,7 @@ export class Linter implements ILinter {
       'The storyData argument was an empty string.',
 &nbsp;
     LINT_DOCUMENT_GETTER_INVALID:
-      'The documentGetter option was not a function.',
+      'The documentFactory option was not a function.',
 &nbsp;
     LINT_STORY_DATA_INVALID:
       'The storyData argument passed to this Linter\'s lint method was not ' +
@@ -1742,11 +1741,11 @@ export class Linter implements ILinter {
       'constants.DetectionModes.',
 &nbsp;
     MERGE_OPTIONS_ARGS_DOCUMENT_GETTER_INVALID:
-      'The documentGetter property was present in the options argument, but ' +
+      'The documentFactory property was present in the options argument, but ' +
       'it was not a function.',
 &nbsp;
     MERGE_OPTIONS_THIS_DOCUMENT_GETTER_INVALID:
-      'The options.documentGetter property of this Linter was not a function.',
+      'The options.documentFactory property of this Linter was not a function.',
 &nbsp;
     MERGE_OPTIONS_ARGS_FORMAT_INVALID:
       'The format property was present in the options argument, but it was ' +
@@ -1841,11 +1840,11 @@ export class Linter implements ILinter {
     if (typeof storyData === 'string') {
       if (!storyData) {
         throw new Error(Linter.strings.LINT_STORY_DATA_EMPTY_STRING);
-      } else if (typeof copy.documentGetter !== 'function') {
+      } else if (typeof copy.documentFactory !== 'function') {
         throw new Error(Linter.strings.LINT_DOCUMENT_GETTER_INVALID);
       }
 &nbsp;
-      const doc = copy.documentGetter();
+      const doc = copy.documentFactory();
       if (!isIDocumentLike(doc)) {
         throw new Error(Linter.strings.LINT_DOCUMENT_INVALID);
       }
@@ -1958,20 +1957,20 @@ export class Linter implements ILinter {
       opts.detectionMode = DetectionModes.Manual;
     }
 &nbsp;
-    if ('documentGetter' in argOpts) {
-      if (typeof argOpts.documentGetter !== 'function') {
+    if ('documentFactory' in argOpts) {
+      if (typeof argOpts.documentFactory !== 'function') {
         throw new Error(
           Linter.strings.MERGE_OPTIONS_ARGS_DOCUMENT_GETTER_INVALID);
       }
 &nbsp;
-      opts.documentGetter = argOpts.documentGetter;
-    } else if ('documentGetter' in opts) {
-      if (typeof opts.documentGetter !== 'function') {
+      opts.documentFactory = argOpts.documentFactory;
+    } else if ('documentFactory' in opts) {
+      if (typeof opts.documentFactory !== 'function') {
         throw new Error(
           Linter.strings.MERGE_OPTIONS_THIS_DOCUMENT_GETTER_INVALID);
       }
     } else {
-      opts.documentGetter = documentGetter;
+      opts.documentFactory = documentFactory;
     }
 &nbsp;
     if ('format' in argOpts) {
@@ -2039,7 +2038,7 @@ export class Linter implements ILinter {
     if ('version' in argOpts) {
       if (!argOpts.version || typeof argOpts.version !== 'string') {
         throw new Error(Linter.strings.MERGE_OPTIONS_ARGS_VERSION_INVALID);
-      } else if (!semver.valid(argOpts.version)) {
+      } else if (!valid(argOpts.version)) {
         throw new Error(Linter.strings.MERGE_OPTIONS_ARGS_VERSION_NOT_SEMANTIC);
       }
 &nbsp;
@@ -2047,7 +2046,7 @@ export class Linter implements ILinter {
     } else if ('version' in opts) {
       if (!opts.version || typeof opts.version !== 'string') {
         throw new Error(Linter.strings.MERGE_OPTIONS_THIS_VERSION_INVALID);
-      } else if (!semver.valid(opts.version)) {
+      } else if (!valid(opts.version)) {
         throw new Error(
           Linter.strings.MERGE_OPTIONS_THIS_VERSION_NOT_SEMANTIC);
       }
@@ -2101,8 +2100,6 @@ export class Linter implements ILinter {
         const tagName = childNode.tagName.toLowerCase();
         if (copy.ignores.elementTags.indexOf(tagName) !== -1) {
           return false;
-        } else if (tagName !== 'tw-passagedata') {
-          return true;
         }
 &nbsp;
         const passageName = (childNode.getAttribute('name') || '').toLowerCase();
@@ -2146,7 +2143,7 @@ export class Linter implements ILinter {
       this.mergeOptions(tempOpts);
     const opts = Map&lt;string, any&gt;(_opts);
     const copy = &lt;ILinterOptions&gt;opts.toObject();
-    const gen = new ArrayIntermediateRepresentationGenerator();
+    const gen = new ArrayIRGenerator();
     return gen.generate(storyData, copy);
   }
 &nbsp;
@@ -2160,7 +2157,7 @@ export class Linter implements ILinter {
       this.mergeOptions(tempOpts);
     const opts = Map&lt;string, any&gt;(_opts);
     const copy = &lt;ILinterOptions&gt;opts.toObject();
-    const gen = new DocumentFragmentIntermediateRepresentationGenerator();
+    const gen = new DocumentFragmentIRGenerator();
     return gen.generate(passages, copy);
   }
 &nbsp;
@@ -2413,7 +2410,7 @@ export default Linter;</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Nov 18 2017 18:29:41 GMT-0500 (EST)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Nov 21 2017 17:29:20 GMT-0500 (EST)
 </div>
 </div>
 <script src="../../prettify.js"></script>

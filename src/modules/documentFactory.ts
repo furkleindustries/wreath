@@ -5,14 +5,15 @@ import {
   IDocumentLike,
 } from '../NodeLike/ParentNodeLike/DocumentLike/IDocumentLike';
 
-export function documentGetter(): IDocumentLike {
+export function documentFactory(): IDocumentLike {
   // @ts-ignore
-  if (typeof document === 'function') {
+  if (typeof document === 'object' && document) {
+    const deepCopy = false;
     // @ts-ignore
-    return document;
+    return document.cloneNode(deepCopy);
   } else {
     return new DocumentLike();
   }
 }
 
-export default documentGetter;
+export default documentFactory;

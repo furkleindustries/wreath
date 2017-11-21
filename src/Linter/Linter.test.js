@@ -1,7 +1,7 @@
 import {
-  ArrayIntermediateRepresentationGenerator,
-} from '../IntermediateRepresentationGenerator/ArrayIntermediateRepresentationGenerator';
-jest.mock('../IntermediateRepresentationGenerator/ArrayIntermediateRepresentationGenerator');
+  ArrayIRGenerator,
+} from '../IRGenerator/ArrayIRGenerator';
+jest.mock('../IRGenerator/ArrayIRGenerator');
 import {
   DetectionModes,
   Formats,
@@ -16,13 +16,13 @@ import {
 } from '../modules/detectVersion';
 jest.mock('../modules/detectVersion');
 import {
-  DocumentFragmentIntermediateRepresentationGenerator,
-} from '../IntermediateRepresentationGenerator/DocumentFragmentIntermediateRepresentationGenerator';
-jest.mock('../IntermediateRepresentationGenerator/DocumentFragmentIntermediateRepresentationGenerator');
+  DocumentFragmentIRGenerator,
+} from '../IRGenerator/DocumentFragmentIRGenerator';
+jest.mock('../IRGenerator/DocumentFragmentIRGenerator');
 import {
-  documentGetter,
-} from '../modules/documentGetter';
-jest.mock('../modules/documentGetter');
+  documentFactory,
+} from '../modules/documentFactory';
+jest.mock('../modules/documentFactory');
 import {
   Map,
 } from 'immutable';
@@ -83,16 +83,16 @@ describe('Linter constructor integration tests.', () => {
   });
 
   it('Uses the Linter\'s mergeOptions method if the options argument does not contain a mergeOptions function.', () => {
-    const documentGetter = jest.fn();
+    const documentFactory = jest.fn();
     const linter = new Linter({
-      documentGetter,
+      documentFactory,
       format: 'gately',
       version: '2.3.4',
     });
 
     expect(linter.options).toEqual({
       detectionMode: DetectionModes.Manual,
-      documentGetter,
+      documentFactory,
       format: Formats.Gately,
       ignores: {
         elementTags: [
@@ -138,7 +138,7 @@ describe('Linter lint unit tests.', () => {
   }
 
   beforeEach(() => {
-    documentGetter.mockClear();
+    documentFactory.mockClear();
     isIDocumentLike.mockClear();
     isIDocumentLike.mockReturnValue(true);
     isIElementLike.mockClear();
@@ -179,18 +179,18 @@ describe('Linter lint unit tests.', () => {
     expect(func).toThrow(Linter.strings.LINT_STORY_DATA_EMPTY_STRING);
   });
 
-  it('Rejects if storyData is a string with content but there is no documentGetter option.', () => {
+  it('Rejects if storyData is a string with content but there is no documentFactory option.', () => {
     const linter = getLinterSafe();
     linter.mergeOptions = jest.fn(() => ({}));
     const func = () => linter.lint('foo');
     expect(func).toThrow(Linter.strings.LINT_DOCUMENT_GETTER_INVALID);
   });
 
-  it('Rejects if the product of the documentGetter option does not match the isIDocumentLike type guard.', () => {
+  it('Rejects if the product of the documentFactory option does not match the isIDocumentLike type guard.', () => {
     isIDocumentLike.mockReturnValue(false);
     const linter = getLinterSafe();
     linter.mergeOptions = jest.fn(() => ({
-      documentGetter: jest.fn(),
+      documentFactory: jest.fn(),
     }));
 
     const func = () => linter.lint('foo');
@@ -202,7 +202,7 @@ describe('Linter lint unit tests.', () => {
     const linter = getLinterSafe();
     const querySelector = jest.fn();
     linter.mergeOptions = jest.fn(() => ({
-      documentGetter: jest.fn(() => ({
+      documentFactory: jest.fn(() => ({
         documentElement: {
           querySelector,
         },
@@ -225,7 +225,7 @@ describe('Linter lint unit tests.', () => {
     }));
 
     linter.mergeOptions = jest.fn(() => ({
-      documentGetter: jest.fn(() => ({
+      documentFactory: jest.fn(() => ({
         createElement,
       })),
     }));
@@ -574,16 +574,16 @@ describe('Linter mergeOptions unit tests.', () => {
       Linter.strings.MERGE_OPTIONS_THIS_DETECTION_MODE_UNRECOGNIZED);
   });
 
-  it('Rejects if documentGetter is in args but is not a function.', () => {
+  it('Rejects if documentFactory is in args but is not a function.', () => {
     const linter = getLinterSafe();
-    const func = () => linter.mergeOptions({ documentGetter: null, });
+    const func = () => linter.mergeOptions({ documentFactory: null, });
     expect(func).toThrow(
       Linter.strings.MERGE_OPTIONS_ARGS_DOCUMENT_GETTER_INVALID);
   });
 
-  it('Rejects if documentGetter is not in args, is in the Linter\'s options property, and is not a function.', () => {
+  it('Rejects if documentFactory is not in args, is in the Linter\'s options property, and is not a function.', () => {
     const linter = getLinterSafe();
-    linter.options.documentGetter = false;
+    linter.options.documentFactory = false;
     const func = () => linter.mergeOptions();
     expect(func).toThrow(
       Linter.strings.MERGE_OPTIONS_THIS_DOCUMENT_GETTER_INVALID);
@@ -784,7 +784,7 @@ describe('Linter mergeOptions unit tests.', () => {
     const linter = getLinterSafe();
     const options = {
       detectionMode: DetectionModes.Manual,
-      documentGetter: jest.fn(),
+      documentFactory: jest.fn(),
       format: Formats.Gately,
       ignores: {},
       runInIsolation: true,
@@ -797,7 +797,7 @@ describe('Linter mergeOptions unit tests.', () => {
   it('Passes through valid options from the Linter\'s options property.', () => {
     const options = {
       detectionMode: DetectionModes.Manual,
-      documentGetter: jest.fn(),
+      documentFactory: jest.fn(),
       format: Formats.Gately,
       ignores: {},
       mergeOptions: jest.fn((aa) => aa),
@@ -824,7 +824,7 @@ describe('Linter mergeOptions unit tests.', () => {
     const linter = new Linter(options);
     expect(linter.mergeOptions({ storyData: {}, })).toEqual({
       detectionMode: DetectionModes.Auto,
-      documentGetter,
+      documentFactory,
       format: '__format',
       ignores,
       runInIsolation: false,
@@ -984,6 +984,7 @@ describe('Linter filterChildNodes unit tests.', () => {
       ignores: {
         nodeTypes: [],
         elementTags: [ 'div', ],
+        passageNames: [],
       },
 
       toObject: jest.fn(() => {
@@ -994,44 +995,80 @@ describe('Linter filterChildNodes unit tests.', () => {
     };
 
     Map.mockReturnValue(options);
+    const getAttribute = jest.fn();
     expect(linter.filterChildNodes([
-      { tagName: 'div', },
-      { tagName: 'span', },
-      { tagName: 'p', },
+      {
+        tagName: 'div',
+        getAttribute,
+      },
+      {
+        tagName: 'span',
+        getAttribute,
+      },
+      {
+        tagName: 'p',
+        getAttribute,
+      },
     ])).toEqual([
-      { tagName: 'span', },
-      { tagName: 'p', },
+      {
+        tagName: 'span',
+        getAttribute,
+      },
+      {
+        tagName: 'p',
+        getAttribute,
+      },
     ]);
   });
   
-  it('Passes through all elements whose nodeType is not in opts.ignores.nodeTypes, whose tagName is not in opts.ignores.elementTags, and whose tag name is not "tw-passagedata".', () => {
+  it('Passes through all elements whose nodeType is not in opts.ignores.nodeTypes and whose tagName is not in opts.ignores.elementTags.', () => {
     const linter = getLinterSafe();
     const options = {
       ignores: {
         nodeTypes: [],
         elementTags: [],
+        passageNames: [],
       },
-
+      
       toObject: jest.fn(() => {
         const obj = Object.assign({}, options);
         delete obj.toObject;
         return obj;
       }),
     };
-
+    
     Map.mockReturnValue(options);
+    const getAttribute = jest.fn();
     expect(linter.filterChildNodes([
-      { tagName: 'div', },
-      { tagName: 'span', },
-      { tagName: 'p', },
+      {
+        tagName: 'div',
+        getAttribute,
+      },
+      {
+        tagName: 'span',
+        getAttribute,
+      },
+      {
+        tagName: 'p',
+        getAttribute,
+      },
     ])).toEqual([
-      { tagName: 'div', },
-      { tagName: 'span', },
-      { tagName: 'p', },
+      {
+        tagName: 'div',
+        getAttribute,
+      },
+      {
+        tagName: 'span',
+        getAttribute,
+      },
+      {
+        tagName: 'p',
+        getAttribute,
+      },
     ]);
   });
 
-  it('Skips all tw-passagedata elements whose passage name is in opts.ignores.passageNames.', () => {
+  it('Skips all elements whose passage name is in opts.ignores.passageNames.', () => {
     const linter = getLinterSafe();
     const options = {
       ignores: {
@@ -1125,7 +1162,7 @@ describe('Linter filterChildNodes unit tests.', () => {
     ]);
   });
 
-  it('Skips all tw-passagedata elements who have tags in opts.ignores.passageTags.', () => {
+  it('Skips all elements who have tags in opts.ignores.passageTags.', () => {
     const linter = getLinterSafe();
     const options = {
       ignores: {
@@ -1193,7 +1230,7 @@ describe('Linter generateIRStageOne unit tests.', () => {
   }
 
   beforeEach(() => {
-    ArrayIntermediateRepresentationGenerator.mockClear();
+    ArrayIRGenerator.mockClear();
     Map.mockClear();
     Map.mockImplementation((aa) => ({
       toObject: () => aa,
@@ -1223,8 +1260,8 @@ describe('Linter generateIRStageOne unit tests.', () => {
     const linter = getLinterSafe();
     const passages = { test: '-_test', };
     linter.generateIRStageOne(passages);
-    expect(ArrayIntermediateRepresentationGenerator.mock.instances.length).toBe(1);
-    expect(ArrayIntermediateRepresentationGenerator.mock.instances[0].generate.mock.calls).toEqual([
+    expect(ArrayIRGenerator.mock.instances.length).toBe(1);
+    expect(ArrayIRGenerator.mock.instances[0].generate.mock.calls).toEqual([
       [
         passages,
         {},
@@ -1243,7 +1280,7 @@ describe('Linter generateIRStageTwo unit tests.', () => {
   }
 
   beforeEach(() => {
-    DocumentFragmentIntermediateRepresentationGenerator.mockClear();
+    DocumentFragmentIRGenerator.mockClear();
     Map.mockClear();
     Map.mockImplementation((aa) => ({
       toObject: () => aa,
@@ -1273,8 +1310,8 @@ describe('Linter generateIRStageTwo unit tests.', () => {
     const linter = getLinterSafe();
     const passages = { test: '-_test', };
     linter.generateIRStageTwo(passages);
-    expect(DocumentFragmentIntermediateRepresentationGenerator.mock.instances.length).toBe(1);
-    expect(DocumentFragmentIntermediateRepresentationGenerator.mock.instances[0].generate.mock.calls).toEqual([
+    expect(DocumentFragmentIRGenerator.mock.instances.length).toBe(1);
+    expect(DocumentFragmentIRGenerator.mock.instances[0].generate.mock.calls).toEqual([
       [
         passages,
         {},

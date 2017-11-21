@@ -7,13 +7,13 @@ import {
 } from '../Ignores/IIgnores';
 
 export interface ILinterOptions {
-  detectionMode:  DetectionModes;
-  documentGetter: Function;
-  format:         Formats;
-  ignores:        IIgnores;
-  mergeOptions?:  Function;
-  runInIsolation: boolean;
-  version:        string;
+  detectionMode:   DetectionModes;
+  documentFactory: Function;
+  format:          Formats;
+  ignores:         IIgnores;
+  mergeOptions?:   Function;
+  runInIsolation:  boolean;
+  version:         string;
 }
 
 export default ILinterOptions;

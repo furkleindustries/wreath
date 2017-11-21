@@ -10,14 +10,14 @@ import {
 } from '../Ignores/IIgnores';
 
 export interface ILinterOptionsArgument {
-  detectionMode?:  DetectionModes;
-  documentGetter?: Function;
-  format?:         Formats;
-  ignores?:        IIgnores;
-  mergeOptions?:   Function; 
-  storyData?:      IElementLike;
-  runInIsolation?: boolean;
-  version?:        string;
+  detectionMode?:   DetectionModes;
+  documentFactory?: Function;
+  format?:          Formats;
+  ignores?:         IIgnores;
+  mergeOptions?:    Function; 
+  storyData?:       IElementLike;
+  runInIsolation?:  boolean;
+  version?:         string;
 }
 
 export default ILinterOptionsArgument;
