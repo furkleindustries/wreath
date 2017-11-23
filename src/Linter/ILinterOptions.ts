@@ -3,16 +3,17 @@ import {
   Formats,
 } from '../constants';
 import {
-  TPassageIgnores,
-} from '../TypeAliases/TPassageIgnores';
+  IIgnores,
+} from '../Ignores/IIgnores';
 
 export interface ILinterOptions {
-  detectionMode:       DetectionModes;
-  documentConstructor: Function;
-  format:              Formats;
-  passageIgnores:      TPassageIgnores;
-  runInIsolation:      boolean;
-  version:             string;
+  detectionMode:   DetectionModes;
+  documentFactory: Function;
+  format:          Formats;
+  ignores:         IIgnores;
+  mergeOptions?:   Function;
+  runInIsolation:  boolean;
+  version:         string;
 }
 
 export default ILinterOptions;

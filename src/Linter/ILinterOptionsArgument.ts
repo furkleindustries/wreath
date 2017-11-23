@@ -6,17 +6,18 @@ import {
   IElementLike,
 } from '../NodeLike/ParentNodeLike/ElementLike/IElementLike';
 import {
-  TPassageIgnores,
-} from '../TypeAliases/TPassageIgnores';
+  IIgnores,
+} from '../Ignores/IIgnores';
 
 export interface ILinterOptionsArgument {
-  detectionMode?:       DetectionModes;
-  documentConstructor?: Function;
-  format?:              Formats;
-  passageIgnores?:      TPassageIgnores;
-  storyData?:           IElementLike;
-  runInIsolation?:      boolean;
-  version?:             string;
+  detectionMode?:   DetectionModes;
+  documentFactory?: Function;
+  format?:          Formats;
+  ignores?:         IIgnores;
+  mergeOptions?:    Function; 
+  storyData?:       IElementLike;
+  runInIsolation?:  boolean;
+  version?:         string;
 }
 
 export default ILinterOptionsArgument;

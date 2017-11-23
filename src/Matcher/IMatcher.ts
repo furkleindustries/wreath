@@ -1,6 +1,6 @@
 import {
   TIndexableObject,
-} from "../TypeAliases/TIndexableObject";
+} from '../TypeAliases/TIndexableObject';
 
 export interface IMatcher extends TIndexableObject {
   first:   Function,

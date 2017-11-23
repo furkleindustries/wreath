@@ -14,11 +14,15 @@ import {
 export class DisplayUsageTask extends AbstractTask {
   executeMicrotask: Function = (
     node:        INodeLike,
-    passageName: string,
+    passageName: string | null,
     format:      string,
     version:     string,
     options:     Array<any> = [],
   ): void => {
+    if (!passageName) {
+      return;
+    }
+
     /* Get rid of VS not-used errors. */format;version;options;
     if (isIElementLike(node)) {
       const tagName = node.tagName.toLowerCase();

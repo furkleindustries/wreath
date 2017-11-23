@@ -1,3 +1,7 @@
+import {
+  IIgnores,
+} from './Ignores/IIgnores';
+
 export enum DetectionModes {
   Auto             = 'auto',
   Manual           = 'manual',
@@ -41,10 +45,11 @@ export enum IgnoredPassageTags {
   Wreath           = 'wreath',
 };
 
-export const passageIgnores = {
-  elementTags:  IgnoredElementTags,
-  passageNames: IgnoredPassageNames,
-  passageTags:  IgnoredPassageTags,
+export const ignores: IIgnores = {
+  elementTags:  Object.values(IgnoredElementTags),
+  nodeTypes:    [],
+  passageNames: Object.values(IgnoredPassageNames),
+  passageTags:  Object.values(IgnoredPassageTags),
 };
 
 export enum Versions {
@@ -55,7 +60,7 @@ export enum Versions {
 export const constants = {
   DetectionModes,
   Formats,
-  passageIgnores,
+  ignores,
   Versions,
 };
 

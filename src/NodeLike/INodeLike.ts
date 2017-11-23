@@ -50,7 +50,7 @@ export interface INodeLike {
   insertBefore(
     newNode: IDocumentFragmentLike |
       IChildNodeLike,
-    referenceNode: IChildNodeLike):                 IDocumentFragmentLike | IChildNodeLike;
+    referenceNode: IChildNodeLike | null):          IDocumentFragmentLike | IChildNodeLike;
   
   replaceChild(
     oldChild: IDocumentFragmentLike |

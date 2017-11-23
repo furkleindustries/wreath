@@ -11,9 +11,6 @@ import {
   ILinterOptionsArgument,
 } from './ILinterOptionsArgument';
 import {
-  IParser,
-} from '../Parser/IParser';
-import {
   IPassage,
 } from '../Passage/IPassage';
 import {
@@ -24,21 +21,20 @@ import {
 } from '../TypeAliases/TIndexableObject';
 
 export interface ILinter {
-  readonly parser:  IParser;
   readonly options: ILinterOptions;
 
   lint(
     storyData: IElementLike,
     tasks:     Array<ITask>,
-    options:   ILinterOptionsArgument):                      Array<ITask>;
+    options:   ILinterOptionsArgument): Array<ITask>;
 
-  generateILStageOne(
+  generateIRStageOne(
     storyData: Array<IElementLike>,
-    options:   TIndexableObject): Array<IPassage>;
+    options:   TIndexableObject):       Array<IPassage>;
 
-  generateILStageTwo(
+  generateIRStageTwo(
     storyData: Array<IPassage>,
-    options:   TIndexableObject): IDocumentFragmentLike;
+    options:   TIndexableObject):       IDocumentFragmentLike;
 }
 
 export default ILinter;
