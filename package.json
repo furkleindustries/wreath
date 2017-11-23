@@ -78,7 +78,8 @@
       "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "transformIgnorePatterns": [
-      "/node_modules/*"
+      "/node_modules/*",
+      "/src/PEG/*"
     ]
   }
 }
