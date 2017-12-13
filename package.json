@@ -1,15 +1,14 @@
 {
   "name": "wreath",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A basic static analysis tool for Twine, compatible with the Sugarcane, Sugarcube, Harlowe, and Gately formats.",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --display-error-details",
+    "build": "webpack",
     "test": "jest",
     "test-coverage": "jest --coverage",
     "test-watch": "jest --watch",
-    "test-coverage-watch": "jest --watch --coverage",
-    "build-parser": "pegjs -o src/PEG/HtmlParser.js src/PEG/html.pegjs && pegjs -o src/PEG/SugarParser.js src/PEG/sugar.pegjs && pegjs -o src/PEG/GatelyParser.js src/PEG/gately.pegjs && pegjs -o src/PEG/HarloweParser.js src/PEG/harlowe.pegjs"
+    "test-coverage-watch": "jest --watch --coverage"
   },
   "repository": {
     "type": "git",
@@ -34,13 +33,16 @@
   },
   "homepage": "https://github.com/furkleindustries/wreath#readme",
   "devDependencies": {
-    "@types/jest": "^21.1.5",
-    "@types/node": "^8.0.50",
+    "@types/css": "0.0.31",
+    "@types/escodegen": "0.0.6",
+    "@types/esprima": "^4.0.1",
+    "@types/jest": "^21.1.8",
+    "@types/node": "^8.0.54",
     "@types/semver": "^5.4.0",
-    "awesome-typescript-loader": "^3.3.0",
+    "awesome-typescript-loader": "^3.4.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.2",
+    "babel-eslint": "^8.0.3",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-preset-env": "^1.6.1",
@@ -48,19 +50,20 @@
     "jest": "^21.2.1",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
-    "source-map-loader": "^0.2.3",
-    "ts-jest": "^21.2.1",
-    "typescript": "^2.6.1",
-    "webpack": "^3.8.1"
+    "pegjs": "^0.10.0",
+    "ts-jest": "^21.2.4",
+    "typescript": "^2.6.2",
+    "webpack": "^3.9.1"
   },
   "dependencies": {
+    "escodegen": "^1.9.0",
+    "ifid": "^0.1.0",
     "immutable": "^3.8.2",
-    "nwmatcher": "^1.4.3",
-    "pegjs": "^0.10.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "node-like": "^0.1.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "semver": "^5.4.1",
-    "void-elements": "^3.1.0"
+    "twine-tree": "^0.1.0"
   },
   "jest": {
     "mapCoverage": true,
@@ -78,8 +81,7 @@
       "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "transformIgnorePatterns": [
-      "/node_modules/*",
-      "/src/PEG/*"
+      "/node_modules/*"
     ]
   }
 }
