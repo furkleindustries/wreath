@@ -4,7 +4,7 @@
   "description": "A basic static analysis tool for Twine, compatible with the Sugarcane, Sugarcube, Harlowe, and Gately formats.",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --show-modules",
     "test": "jest",
     "test-coverage": "jest --coverage",
     "test-watch": "jest --watch",
@@ -37,7 +37,7 @@
     "@types/escodegen": "0.0.6",
     "@types/esprima": "^4.0.1",
     "@types/jest": "^21.1.8",
-    "@types/node": "^8.0.54",
+    "@types/node": "^8.0.58",
     "@types/semver": "^5.4.0",
     "awesome-typescript-loader": "^3.4.1",
     "babel-cli": "^6.26.0",
@@ -48,37 +48,31 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-typescript": "^7.0.0-beta.3",
     "jest": "^21.2.1",
-    "less": "^2.7.3",
-    "less-loader": "^4.0.5",
     "pegjs": "^0.10.0",
     "ts-jest": "^21.2.4",
     "typescript": "^2.6.2",
-    "webpack": "^3.9.1"
+    "webpack": "^3.10.0"
   },
   "dependencies": {
     "escodegen": "^1.9.0",
-    "ifid": "^0.1.0",
+    "ifid": "^0.1.1",
     "immutable": "^3.8.2",
     "node-like": "^0.1.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
     "semver": "^5.4.1",
-    "twine-tree": "^0.1.0"
+    "twine-tree": "^0.1.1"
   },
   "jest": {
     "mapCoverage": true,
     "moduleFileExtensions": [
       "ts",
-      "tsx",
-      "js",
-      "jsx"
+      "js"
     ],
     "testMatch": [
       "<rootDir>/src/**/*.test.js"
     ],
     "transform": {
-      "^.+\\.jsx?$": "babel-jest",
-      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.ts$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "transformIgnorePatterns": [
       "/node_modules/*"
