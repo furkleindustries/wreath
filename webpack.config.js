@@ -14,14 +14,11 @@ module.exports = {
     // the filename template for entry chunks
     filename: 'index.js', // string
 
-    // the name of the exported library
-    library: 'TwineLinter', // string,
-
-    libraryTarget: 'commonjs',
+    libraryTarget: 'umd',
   },
 
   resolve: {
-    extensions: [ '.ts', '.tsx', '.js', '.jsx', ],
+    extensions: [ '.ts', '.js', ],
   },
 
   module: {
@@ -36,7 +33,7 @@ module.exports = {
         // - Use RegExp only in test and for filename matching
         // - Use arrays of absolute paths in include and exclude
         // - Try to avoid exclude and prefer include
-        test: /\.(j|t)sx?$/,
+        test: /\.(j|t)s$/,
         include: [ path.resolve(__dirname, 'src'), ],
 
         // the loader which should be applied, it'll be resolved relative to the context
